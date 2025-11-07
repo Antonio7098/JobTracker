@@ -4,6 +4,6 @@ namespace JobTracker.Api.Models;
 
 public class Employer
 {
-    public int Id,
-    public required string Name
+    public Guid Id { get; set; }
+    public required string Name { get; set; }
 }
