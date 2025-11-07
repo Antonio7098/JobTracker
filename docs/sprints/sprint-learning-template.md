@@ -21,11 +21,31 @@
 
 ---
 
-## Marking
+## 🤖 AI Marking & Feedback
 
-**First time**
-[ ] - Feedback point 1
-[ ] - Feedback point 2
+*This section will be filled out by the AI after reviewing your work.*
+
+**Overall Assessment:** `[AI will provide a brief, high-level summary of the work.]`
+
+**Final Status:** `[Pass / Rework Needed / Incomplete]`
+
+---
+
+### Strengths
+
+*`[AI will list specific things that were done correctly and well.]`
+* ...
+
+### Areas for Improvement & Corrections
+
+*`[AI will list specific, actionable feedback on what was done incorrectly or could be improved. This is where errors will be flagged.]`
+[ ] **Correction 1:** ...
+[ ] **Correction 2:** ...
+
+### Conceptual Gaps
+
+*`[AI will identify any underlying conceptual misunderstandings based on the submitted work.]`
+* ...
 
 ## ✅ Consolidation Questions (Test of Basic Understanding)
 
