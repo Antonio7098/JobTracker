@@ -1,0 +1,10 @@
+POST http://localhost:5035/employers
+Content-Type: application/json
+
+{
+    "Name": "Sage"
+}
+
+###
+
+GET http://localhost:5035/employers

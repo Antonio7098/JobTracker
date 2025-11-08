@@ -13,11 +13,17 @@
 ---
 
 
-### Task List
+## ✅ Task List
 
-[ ] - **Task 1 Name**
-    Description
-    [ ] - **Sub-task 1 Name**
+- [ ] **Task 1: [Task 1 Name]**
+    > *Description: [Briefly describe the purpose of this task.]*
+    - [ ] Sub-task 1.1: [First step]
+    - [ ] Sub-task 1.2: [Second step]
+
+- [ ] **Task 2: [Task 2 Name]**
+    > *Description: [Briefly describe the purpose of this task.]*
+    - [ ] Sub-task 2.1: [First step]
+    - [ ] Sub-task 2.2: [Second step]
 
 ---
 
@@ -47,19 +53,39 @@
 *`[AI will identify any underlying conceptual misunderstandings based on the submitted work.]`
 * ...
 
-## ✅ Consolidation Questions (Test of Basic Understanding)
+## 🧠 Consolidation & Deep Dive Questions
 
+### Basic Understanding
 *These questions focus on recall, definition, and direct application.*
 
-1.  What are the **three fundamental terms** that define **[Concept Name]**?
+1.  What is the difference between **[Term A]** and **[Term B]** in the context of **[Concept Name]**?  
+    **Answer:** 
+    > **AI Feedback:** 
+
+2.  What is the purpose of **[Key Component]**?
+    **Answer:** 
+    > **AI Feedback:** 
+
+3.  In your own words, how does **[Process X]** work?
+    **Answer:** 
+    > **AI Feedback:** 
 
 ---
 
-## 🧠 Stretch & Deep Dive Questions (Test of Underlying Mechanics & Synthesis)
+### Stretch & Synthesis
+*These questions require synthesis, exploring trade-offs, and connecting concepts.*
 
-*These questions require synthesis, exploring trade-offs, and connecting the concept to broader ideas.*
+1.  **Causality & Trade-Offs:** You were instructed to use **[Technique A]**. What are the trade-offs of this approach compared to **[Alternative Technique B]**? What would happen if you didn't use it at all?
+    **Answer:** 
+    > **AI Feedback:** 
 
-1.  **Causality & Trade-Offs:** If we **remove [Component X]** from this concept, what is the single most critical function that fails? Why is it indispensable?
+2.  **Connecting Concepts:** How does **[Concept Name]** relate to the broader topic of **[Related Field]** that we covered previously?
+    **Answer:** 
+    > **AI Feedback:** 
+
+3.  **Critical Thinking:** A common mistake when implementing **[Concept Name]** is **[Common Mistake]**. Why does this happen, and how can you prevent it?
+    **Answer:** 
+    > **AI Feedback:** 
 
 ---
 
@@ -67,4 +93,5 @@
 
 * **Status:** [Fully Done / Partially Done / Rework Needed]
 * **Most Difficult Insight:** [What was the single hardest concept to grasp?]
+**AI FInal Feedback:**
 * **Next Action:** [e.g., Start Sprint Template for next concept, Deep dive into Stretch Question 3].

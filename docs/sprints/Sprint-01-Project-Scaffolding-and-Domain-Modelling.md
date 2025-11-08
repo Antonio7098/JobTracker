@@ -84,15 +84,24 @@
 *These questions focus on recall, definition, and direct application.*
 
 1.  What is the difference between a **class** and an **object** in C#?
-    **Answer:** An object is an instance of a class.
+    **Answer:**
+    ```
+    An object is an instance of a class.
+    ```
     > **AI Feedback:** Correct. This is the perfect, concise definition. A class is the blueprint, and an object is the actual house built from that blueprint.
 
 2.  What is the purpose of the `.csproj` file? What key information from the guide does it contain (e.g., `TargetFramework`)?
-    **Answer:** It serves as a central configuration file, containing all the information the .NET build system needs to process the project.
+    **Answer:**
+    ```
+    It serves as a central configuration file, containing all the information the .NET build system needs to process the project.
+    ```
     > **AI Feedback:** Correct. It tells the compiler which version of .NET to target, what files to include, and what other projects or packages it depends on.
 
 3.  In C#, what is the difference between an `int` and a `string`? What about an `int` and a `Guid`? Which one do you think is better for a unique ID, and why?
-    **Answer:** An int is used for integers, and a string for strings. Not sure about Guid.
+    **Answer:**
+    ```
+    An int is used for integers, and a string for strings. Not sure about Guid.
+    ```
     > **AI Feedback:** Your first part is correct. Your uncertainty about `Guid` is a great point to expand on.
     > A **`Guid`** (Globally Unique Identifier) is a 128-bit value that is generated to be unique across all computers and all time. For example: `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`.
     > 
@@ -102,7 +111,10 @@
     > *   **Conclusion:** For database primary keys, `Guid` is almost always a more robust and secure choice than `int`.
 
 4.  What does the `public` keyword mean on a class or a property?
-    **Answer:** It means that the property can be accessed and changed directly without having to use a method.
+    **Answer:**
+    ```
+    It means that the property can be accessed and changed directly without having to use a method.
+    ```
     > **AI Feedback:** This is mostly correct for properties. More broadly, `public` is an **accessibility modifier** that means the member (whether it's a class, property, or method) can be accessed by **any code in any project**. It's about making it visible and usable to everything, not just about avoiding methods.
 
 ---
@@ -111,24 +123,36 @@
 *These questions require synthesis, exploring trade-offs, and connecting concepts.*
 
 1.  **Causality & Trade-Offs:** You were instructed to start with the **ASP.NET Core Empty Web** template. The guide mentioned you could have used the **Web API** template, which gives you controllers and a `WeatherForecast` example. Why are we starting empty? What specific knowledge would you fail to build if you just used the pre-built Web API template?
-    **Answer:** You do not get to see the causality between your code and the framework. Things like how services enable controller functionality, why routing works without explicit configurations, and how model validation integrates with http 400 responses.
+    **Answer:**
+    ```
+    You do not get to see the causality between your code and the framework. Things like how services enable controller functionality, why routing works without explicit configurations, and how model validation integrates with http 400 responses.
+    ```
     > **AI Feedback:** This is a perfect answer. By starting empty, you are forced to build the "magic" yourself, which is the fastest way to learn how the framework truly works. You correctly identified the key hidden components: service registration (Dependency Injection), routing middleware, and the validation pipeline.
 
 2.  **Connecting Concepts (Task 3.1):** How did you decide to link your `JobVacancy` and `Employer` classes?
     *   **Option A:** Did you put an `EmployerId` property on the `JobVacancy` class?
     *   **Option B:** Did you put a full `Employer` object on the `JobVacancy` class?
     *   **Option C:** Did you put a `List<JobVacancy>` on the `Employer` class?
-    **Answer:** A and B
+    **Answer:**
+    ```
+    A and B
+    ```
     
     > **Critique:** Justify your choice. What are the potential problems and benefits of your chosen approach versus the others, before we even add a database?
-    **Answer:** The id is for easy referencing, adn the full object is ...
+    **Answer:**
+    ```
+    The id is for easy referencing, adn the full object is ...
+    ```
     > **AI Feedback:** You chose the exact correct combination (A and B), and your justification was on the right track. Let me complete the thought for you:
     > *   The `EmployerId` (Option A) is the **Foreign Key**. This is what the database will use to create the actual link between the `JobVacancies` table and the `Employers` table. It's essential for the database structure.
     > *   The `Employer` object (Option B) is the **Navigation Property**. This is for the C# code. It allows you to easily access the related `Employer` from a `JobVacancy` object (e.g., `myVacancy.Employer.Name`) without writing a manual database query. The database framework (like Entity Framework Core) uses the foreign key to automatically "fill in" the navigation property.
     > By including both, you get the best of both worlds: a clear database schema and easy-to-use C# objects.
 
 3.  **Critical Thinking:** Look at your new C# classes. They are likely "POCOs" (Plain Old C# Objects). Right now, someone could create a `JobVacancy` object and set its `Title` to `null` or an empty string. Is this a problem? Whose job is it to prevent this? Is it the job of the model itself (the class) or the job of the code that *uses* the class?
-**Answer:** I guess you can enforce it in the model or in the service/controller/etc. even if you do it in the model, you will need some sort of feedback coming through to the client. i remember a method used in the guide, something to do with "enforce validation", but I cant remember where it was used, or if it is relevant to this.
+**Answer:**
+```
+I guess you can enforce it in the model or in the service/controller/etc. even if you do it in the model, you will need some sort of feedback coming through to the client. i remember a method used in the guide, something to do with "enforce validation", but I cant remember where it was used, or if it is relevant to this.
+```
     > **AI Feedback:** Your intuition is spot-on. The best practice in ASP.NET Core is to **enforce validation in the model itself**.
     > You can add attributes directly to your model's properties, like this:
     > '''csharp

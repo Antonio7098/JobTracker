@@ -23,3 +23,4 @@
 /home/antonio/programming/csharp/JobTracker/JobTracker.Api/obj/Debug/net8.0/JobTracker.Api.pdb
 /home/antonio/programming/csharp/JobTracker/JobTracker.Api/obj/Debug/net8.0/JobTracker.Api.genruntimeconfig.cache
 /home/antonio/programming/csharp/JobTracker/JobTracker.Api/obj/Debug/net8.0/ref/JobTracker.Api.dll
+/home/antonio/programming/csharp/JobTracker/JobTracker.Api/obj/Debug/net8.0/JobTracker.Api.sourcelink.json
