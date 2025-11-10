@@ -2,5 +2,6 @@ namespace JobTracker.Api.DTOs;
 
 public record class EmployerDto
 {
-    required string Name
+    public Guid Id { get; set; }
+    public required string Name { get; set; }
 }
