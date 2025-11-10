@@ -1,39 +1,45 @@
-# 🚀 Project Overview: Job Vacancy API (Learning Project)
+# 🚀 Project Overview: Job Tracker API (Learning Project)
 
 ## 🎯 Primary Objective
 
-To build a complete, production-ready backend **REST API** using **ASP.NET Core 8** and **C#**, fulfilling all standard **CRUD** operations for `JobVacancy` and `Employer` resources, while intentionally applying every concept covered in the beginner course guide.
+To build a complete, production-ready backend **REST API** using **ASP.NET Core 8** and **C#**. This project will serve as a practical demonstration of enterprise-style practices, including decoupled architecture, comprehensive testing, and automated CI/CD workflows.
 
 ---
 
-## 🏗️ Core Resources (Domain Models)
+## 🏗️ Core Architecture & Domain
 
-| Resource | Key Properties to Manage | Relationship |
+| Resource | Key Properties | Relationship |
 | :--- | :--- | :--- |
-| **Employer** | ID (GUID), Name, Company Description | One Employer can have Many Job Vacancies |
-| **JobVacancy** | ID (GUID), Title, Description, Salary Range, **Employer ID** | Many Vacancies belong to One Employer |
+| **Employer** | `Id` (GUID), `Name`, `CompanyDescription` | One Employer can have **Many** Job Vacancies. |
+| **JobVacancy** | `Id` (GUID), `Title`, `Description`, `SalaryRange`, `EmployerId` | **Many** Vacancies belong to **One** Employer. |
 
 ---
 
-## ✅ Key Concepts to Implement (The Checklist)
+## ✅ Key Concepts & Skills Checklist
 
-| Stage | Concept/Feature | Purpose & Rationale |
+This checklist is our roadmap. Each item directly corresponds to a skill listed on your CV.
+
+| Stage | Concept/Feature | Purpose & Rationale (The "Why") |
 | :--- | :--- | :--- |
-| **I. Foundation** | **C# & OOP Fundamentals** | Define classes, properties, and the one-to-many relationship. |
-| **II. API Design** | **Minimal APIs** | Implement basic endpoints (GET, POST, PUT, DELETE) for both resources. |
-| **III. Architecture** | **Data Transfer Objects (DTOs)** | Define the contract for inbound and outbound data, protecting the internal domain models. |
-| **IV. Structure** | **Extension Methods & Route Groups** | Organize endpoints logically and apply common middleware/settings efficiently. |
-| **V. Data Access** | **Entity Framework Core (EF Core)** | Introduce a real database (SQLite for local dev) using an **ORM**. |
-| **VI. Configuration** | **Configuration System** | Store the database connection string in `appsettings.json` (avoid hardcoding). |
-| **VII. Decoupling** | **Dependency Injection (DI)** | Use DI for services (e.g., database context, repositories) and understand service lifetimes. |
-| **VIII. Optimization** | **Asynchronous Programming** | Implement `async`/`await` for all I/O bound database operations for efficiency. |
-| **IX. Quality** | **Validation** | Ensure proper handling of invalid inputs (e.g., missing titles, bad IDs). |
-| **X. Testing** | **SpecFlow/Gherkin** | Implement acceptance tests using Behavior-Driven Development (BDD) to verify API functionality. |
+| **I. Foundation** | **C# & OOP Fundamentals** | Define classes, properties, and the one-to-many relationship. The bedrock of the domain model. |
+| **II. API Layer** | **Minimal APIs** | Implement basic endpoints (GET, POST, PUT, DELETE) for both resources. |
+| **III. Architecture** | **Repository Pattern & DI** | Decouple business logic from data access. Use Dependency Injection to manage services like repositories. |
+| **IV. Contracts** | **Data Transfer Objects (DTOs)** | Define a stable public contract for the API, protecting internal domain models from breaking changes. |
+| **V. Structure** | **Route Groups & Extension Methods** | Logically organize endpoints and apply common middleware/settings efficiently for clean, readable code. |
+| **VI. Persistence** | **Entity Framework Core & MySQL** | Introduce a real database (**MySQL**) using an ORM. Manage schema changes with **Code-First Migrations**. |
+| **VII. Configuration** | **Externalised Configuration** | Store secrets and connection strings in `appsettings.json` and user secrets, not hardcoded in the source. |
+| **VIII. Performance** | **Asynchronous Programming** | Implement `async`/`await` for all I/O-bound database operations to ensure the API is scalable and efficient. |
+| **IX. Robustness** | **Validation & Structured Error Handling** | Handle invalid inputs gracefully and implement a consistent strategy for error responses. |
+| **X. Quality** | **BDD: SpecFlow/Gherkin** | Write acceptance tests that verify the API's behavior against user requirements from the outside-in. |
+| **XI. Quality** | **Unit Testing** | Write unit tests to verify individual components (like services or logic classes) in isolation. |
+| **XII. Automation** | **CI/CD with GitHub Actions** | Create a Continuous Integration pipeline that automatically builds the project and runs all tests on every commit. |
 
 ---
 
 ## 🛠️ Required Tools
 
-* **.NET 8 SDK**
-* **Visual Studio Code (VS Code)**
-* **VS Code Extensions:** C# Dev Kit, Rest Client, SQLite
+*   .NET 8 SDK
+*   Visual Studio Code (VS Code)
+*   VS Code Extensions: C# Dev Kit, REST Client
+*   MySQL Database (e.g., via Docker or a local installation)
+*   Git & a GitHub account
