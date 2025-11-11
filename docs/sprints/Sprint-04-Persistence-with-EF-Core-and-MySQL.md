@@ -17,17 +17,17 @@
 
 ## ✅ Task List
 
-- [ ] **Task 1: Project Setup & Configuration**
+- [X] **Task 1: Project Setup & Configuration**
     > *Description: Add the EF Core packages and configure the database connection string, separating it from source code.*
-    - [ ] Sub-task 1.1: Use the NuGet package manager to find and install `Pomelo.EntityFrameworkCore.MySql`. This is the database provider that allows EF Core to communicate with MySQL.
-    - [ ] Sub-task 1.2: Install the `Microsoft.EntityFrameworkCore.Design` package. This package provides the tools necessary for EF Core migrations.
-    - [ ] Sub-task 1.3: In your `appsettings.json` file, add a new `ConnectionStrings` section and a connection string named "DefaultConnection" for a local MySQL database. (e.g., `Server=localhost;Database=JobTrackerDb;User=user;Password=password;`).
+    - [X] Sub-task 1.1: Use the NuGet package manager to find and install `Pomelo.EntityFrameworkCore.MySql`. This is the database provider that allows EF Core to communicate with MySQL.
+    - [X] Sub-task 1.2: Install the `Microsoft.EntityFrameworkCore.Design` package. This package provides the tools necessary for EF Core migrations.
+    - [X] Sub-task 1.3: In your `appsettings.json` file, add a new `ConnectionStrings` section and a connection string named "DefaultConnection" for a local MySQL database. (e.g., `Server=localhost;Database=JobTrackerDb;User=user;Password=password;`).
 
 - [ ] **Task 2: Create the `DbContext`**
     > *Description: Create the EF Core DbContext, which represents a session with the database and allows you to query and save instances of your entities.*
-    - [ ] Sub-task 2.1: Create a new top-level folder named `Data`.
-    - [ ] Sub-task 2.2: Inside `Data`, create a new class `JobTrackerDbContext` that inherits from `Microsoft.EntityFrameworkCore.DbContext`.
-    - [ ] Sub-task 2.3: Add `DbSet<Employer>` and `DbSet<JobVacancy>` properties to your context. These properties represent the tables in your database.
+    - [X] Sub-task 2.1: Create a new top-level folder named `Data`.
+    - [X] Sub-task 2.2: Inside `Data`, create a new class `JobTrackerDbContext` that inherits from `Microsoft.EntityFrameworkCore.DbContext`.S
+    - [X] Sub-task 2.3: Add `DbSet<Employer>` and `DbSet<JobVacancy>` properties to your context. These properties represent the tables in your database.
     - [ ] Sub-task 2.4: In `Program.cs`, register your `DbContext` with the dependency injection container using `builder.Services.AddDbContext`. You will need to read the connection string from your configuration file here.
 
 - [ ] **Task 3: Create and Apply the Initial Database Migration**
