@@ -2,5 +2,5 @@ namespace JobTracker.Api.DTOs;
 
 public record class UpdateEmployerDto
 {
-    required string Name
+    public required string Name { get; set; }
 }
