@@ -93,23 +93,38 @@
 *These questions focus on recall, definition, and direct application.*
 
 1.  What is the purpose of the `DbContext` class in EF Core?
-    **Answer:** Allows you to connect and query to the database
+    **Answer:**
+    ```
+    Allows you to connect and query to the database
+    ```
     > **AI Feedback:** Correct! To expand on that, the `DbContext` represents a "sessifon" with the database. It not only allows you to query data but also tracks any changes you make to the C# objects you've queried, so it can save those changes back to the database.
 
 2.  What is the difference between a `DbSet<T>` and a `List<T>`?
-    **Answer:** DbSet is a collection of database entries that can be queried, list is a list of thigs.
+    **Answer:**
+    ```
+    DbSet is a collection of database entries that can be queried, list is a list of thigs.
+    ```
     > **AI Feedback:** That's the right idea. The key difference is *where* the data lives. A `List<T>` is an in-memory collection in your application. A `DbSet<T>` represents a table in the database. When you write a LINQ query against a `DbSet`, EF Core translates it into SQL and runs it on the database server, only bringing the results into memory.
 
 3.  In your own words, what problem do "migrations" solve? What would you have to do if you didn't use them?
-    **Answer:** Migrations allow you to update the database through ef, without having to write sql.
+    **Answer:**
+    ```
+    Migrations allow you to update the database through ef, without having to write sql.
+    ```
     > **AI Feedback:** Exactly. Migrations keep your database schema synchronized with your C# models over time. Without them, you would have to manually write SQL scripts (`ALTER TABLE`, `CREATE TABLE`, etc.) every time you changed your models, which is slow, error-prone, and hard to manage in a team.
 
 4.  What is a Docker container, and why might you use Docker for running MySQL instead of installing it directly on your system?
-    **Answer:** Allows you to containerise things, so the database for this project runs in its own little container without affecting system wide MySql, or vice versa.
+    **Answer:**
+    ```
+    Allows you to containerise things, so the database for this project runs in its own little container without affecting system wide MySql, or vice versa.
+    ```
     > **AI Feedback:** Perfect answer. This captures the core benefit of isolation beautifully. It prevents conflicts, ensures every developer has the exact same setup, and makes it trivial to create and destroy the database environment without impacting your local machine.
 
 5.  When you run `docker run -d --name jobtracker-mysql -p 3306:3306 mysql:8.0`, what does the `-p 3306:3306` flag do? Why is this necessary for your .NET application to connect?
-    **Answer:** not sured
+    **Answer:**
+    ```
+    not sured
+    ```
     > **AI Feedback:** The `-p` flag is for "port mapping". It connects a port on your local machine (the host) to a port inside the container. ` -p 3306:3306` maps port 3306 on your `localhost` to port 3306 inside the container, where MySQL is listening for connections. It's necessary because your .NET app runs on the host, outside the container's isolated network, so this mapping exposes the database to your app.
 
 ---
@@ -118,19 +133,31 @@
 *These questions require synthesis, exploring trade-offs, and connecting concepts.*
 
 1.  **Causality & Trade-Offs:** Why use an ORM like EF Core instead of writing raw SQL with a library like ADO.NET or Dapper? What are the primary trade-offs (e.g., performance vs. productivity)?
-    **Answer:** It is easier. You can do things like dependency injection. You get less performance but more productivity.
+    **Answer:**
+    ```
+    It is easier. You can do things like dependency injection. You get less performance but more productivity.
+    ```
     > **AI Feedback:** You've hit the main trade-off perfectly: productivity vs. performance. While you do use dependency injection *with* an ORM, the core benefits are the productivity boost from working with C# objects (no manual SQL), compile-time type checking for your queries, and abstracting away database-specific syntax.
 
 2.  **Connecting Concepts:** When you call `_context.SaveChangesAsync()`, how does the `DbContext`'s Change Tracker know whether to generate an `INSERT`, `UPDATE`, or `DELETE` statement for a particular C# object?
-    **Answer:** Because it keeps track of the changes made to anything queried entity from the database.
+    **Answer:**
+    ```
+    Because it keeps track of the changes made to anything queried entity from the database.
+    ```
     > **AI Feedback:** Correct! The Change Tracker automatically assigns a state (`Added`, `Modified`, `Deleted`, `Unchanged`) to every entity it's aware of. When you call `SaveChangesAsync()`, it checks this state for each entity and generates the corresponding SQL command.
 
 3.  **Critical Thinking:** What do you think would happen if you changed your `Employer` C# model (e.g., added a new `string Location` property) but forgot to create and apply a new migration before running the app? What kind of error might you see?
-    **Answer:** You would see invalid field.
+    **Answer:**
+    ```
+    You would see invalid field.
+    ```
     > **AI Feedback:** You're right on track. You'd get an error indicating a mismatch between your application's model and the database's schema. Often, this is an `InvalidOperationException` from EF Core stating "The model backing the 'JobTrackerDbContext' context has changed since the database was created."
 
 4.  **Docker & Environment Isolation:** If you run `docker stop jobtracker-mysql`, does your MySQL data disappear? What about if you run `docker rm jobtracker-mysql`? Explain the difference and what Docker concept is involved (hint: think about persistence).
-    **Answer:** Docker stop means you will not be able to connect. If you delete it, you will have to re build it and will loose all of your data. 
+    **Answer:**
+    ```
+    Docker stop means you will not be able to connect. If you delete it, you will have to re build it and will loose all of your data.
+    ```
     > **AI Feedback:** Exactly right. `docker stop` just pauses the container; its filesystem and data are preserved. `docker rm` permanently removes the container and its filesystem. To make data persist even after a `rm`, you would use a Docker Volume, which stores the data on the host machine, separate from the container's lifecycle.
 
 ## 📝 Sprint Review

@@ -149,10 +149,10 @@
     > By including both, you get the best of both worlds: a clear database schema and easy-to-use C# objects.
 
 3.  **Critical Thinking:** Look at your new C# classes. They are likely "POCOs" (Plain Old C# Objects). Right now, someone could create a `JobVacancy` object and set its `Title` to `null` or an empty string. Is this a problem? Whose job is it to prevent this? Is it the job of the model itself (the class) or the job of the code that *uses* the class?
-**Answer:**
-```
-I guess you can enforce it in the model or in the service/controller/etc. even if you do it in the model, you will need some sort of feedback coming through to the client. i remember a method used in the guide, something to do with "enforce validation", but I cant remember where it was used, or if it is relevant to this.
-```
+    **Answer:**
+    ```
+    I guess you can enforce it in the model or in the service/controller/etc. even if you do it in the model, you will need some sort of feedback coming through to the client. i remember a method used in the guide, something to do with "enforce validation", but I cant remember where it was used, or if it is relevant to this.
+    ```
     > **AI Feedback:** Your intuition is spot-on. The best practice in ASP.NET Core is to **enforce validation in the model itself**.
     > You can add attributes directly to your model's properties, like this:
     > '''csharp

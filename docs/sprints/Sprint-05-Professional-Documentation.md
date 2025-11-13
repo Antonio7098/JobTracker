@@ -84,23 +84,38 @@
 *These questions focus on recall, definition, and direct application.*
 
 1.  What problem does OpenAPI (Swagger) solve? What would you have to do to document your API if you didn't use a tool like this?
-    **Answer:** It automaticlaly updates when you make changes to your api, saving you from having to constantly update your documentation,
+    **Answer:**
+    ```
+    It automaticlaly updates when you make changes to your api, saving you from having to constantly update your documentation,
+    ```
     > **AI Feedback:** Correct. This is the main benefit. Without it, you would have to manually write and maintain a static documentation file. This manual process is slow, tedious, and almost always becomes inaccurate as the API changes over time.
 
 2.  What is the purpose of the `<GenerateDocumentationFile>true</GenerateDocumentationFile>` setting in the `.csproj` file? What file does it create?
-    **Answer:** Tells the project to generate the swagger documentation
+    **Answer:**
+    ```
+    Tells the project to generate the swagger documentation
+    ```
     > **AI Feedback:** This is partially correct, but the distinction is important. This setting tells the *C# compiler* to generate an `.xml` file (e.g., `JobTracker.Api.xml`) that contains all the `///` comments from your code. It's Swashbuckle that then reads this XML file to *enrich* the Swagger documentation.
 
 3.  In your own words, what is Semantic Versioning (SemVer)? What do the MAJOR, MINOR, and PATCH numbers signify?
-    **Answer:** Major is incremented when the new version breaks existing functionality. Like changing an endpoint url, as the client would no linger be able to access it. Minor is for smaller, non-breaking features. Not sure about patch.
+    **Answer:**
+    ```
+    Major is incremented when the new version breaks existing functionality. Like changing an endpoint url, as the client would no linger be able to access it. Minor is for smaller, non-breaking features. Not sure about patch.
+    ```
     > **AI Feedback:** Your explanations for MAJOR and MINOR are perfect. You're just missing PATCH, which is for backward-compatible **bug fixes**. For example, if an endpoint was returning an incorrect calculation but the API structure didn't change, you would increment the PATCH version.
 
 4.  Why is `builder.Services.AddEndpointsApiExplorer()` necessary for Swashbuckle to work, especially in a project started from an "Empty" template? What problem did we encounter when it was missing?
-    **Answer:** When it was missing, we got an error as swashbuckle did not know the path to the endpoint information.
+    **Answer:**
+    ```
+    When it was missing, we got an error as swashbuckle did not know the path to the endpoint information.
+    ```
     > **AI Feedback:** Exactly. To be more precise, Swashbuckle depends on a service that "explores" or "discovers" all the API endpoints. `AddEndpointsApiExplorer()` is what registers that core service. Without it, the dependency was missing, and the application failed to start.
 
 5.  We observed that our `EmployerDto` schema was initially missing from the Swagger UI, even though our `GET` endpoints were returning it. Why did this happen, and how does adding `.Produces<EmployerDto>()` to an endpoint solve this problem?
-    **Answer:** Cant remember.
+    **Answer:**
+    ```
+    Cant remember.
+    ```
     > **AI Feedback:** This happened because your endpoint returned a generic `IResult` (via `Results.Ok(...)`). The API explorer couldn't know for sure what type of object was *inside* that `IResult` at compile time. Adding `.Produces<EmployerDto>()` gives the explorer a crucial hint, explicitly telling it, "A successful `200 OK` response from this endpoint will contain an `EmployerDto`," which allows it to generate the correct schema.
 
 ---
@@ -109,15 +124,24 @@
 *These questions require synthesis, exploring trade-offs, and connecting concepts.*
 
 1.  **Causality & Trade-Offs:** What are the pros and cons of auto-generated API documentation (like Swagger) compared to manually written documentation (like in a separate `.md` file)? When might you prefer one over the other?
-    **Answer:** Swagger automatically updates adn makes it easier to maintain. I would always want swagger. Maybe if it is a small, static api.
+    **Answer:**
+    ```
+    Swagger automatically updates adn makes it easier to maintain. I would always want swagger. Maybe if it is a small, static api.
+    ```
     > **AI Feedback:** You've hit the main trade-off perfectly: auto-generated docs are always up-to-date but can lack context, while manual docs provide rich context but can become outdated. The best approach, which you've used in this sprint, is a **combination of both**: use Swagger for the low-level, technical API reference, and use manual `.md` files (`README.md`, `ARCHITECTURE.md`) for the high-level "how-to" guides and architectural explanations.
 
 2.  **Connecting Concepts:** How does Swashbuckle use a concept called **Reflection** to inspect your C# code and generate the `swagger.json` file? (A high-level answer is fine).
-    **Answer:** Not sure.
+    **Answer:**
+    ```
+    Not sure.
+    ```
     > **AI Feedback:** Reflection is a C# feature that allows code to inspect other code *while it is running*. When your application starts, Swashbuckle uses reflection to scan your compiled code. It looks for all the endpoint methods (`app.MapGet`, `app.MapPost`, etc.) and then "reflects" on them to read their metadata: their routes, their parameters (like `CreateEmployerDto`), and the extra information you provided (like `.Produces<EmployerDto>()` and `.WithSummary()`). It uses all this information to build the `swagger.json` file.
 
 3.  **Critical Thinking:** What happens to your API documentation if you add a new endpoint but forget to add `/// <summary>` comments to it? Why is this a problem for the people using your API?
-    **Answer:** We did not ad summary comments, we used methods likke WithSummary. If we did not do that, the people using the api might not know exactly what the endpoint does.
+    **Answer:**
+    ```
+    We did not ad summary comments, we used methods likke WithSummary. If we did not do that, the people using the api might not know exactly what the endpoint does.
+    ```
     > **AI Feedback:** This is a perfect answer. You are correct that we used the modern `.WithSummary()` method. And you're right about the consequence: the endpoint will still appear in the UI, but it will have no description. This forces the person using your API to guess what it does or read the source code, which slows down development and can lead to incorrect assumptions.
 ---
 

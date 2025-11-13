@@ -45,8 +45,8 @@
 ### Areas for Improvement & Corrections
 
 *`[AI will list specific, actionable feedback on what was done incorrectly or could be improved. This is where errors will be flagged.]`
-[ ] **Correction 1:** ...
-[ ] **Correction 2:** ...
+- [ ] **Correction 1:** ...
+- [ ] **Correction 2:** ...
 
 ### Conceptual Gaps
 
@@ -59,15 +59,24 @@
 *These questions focus on recall, definition, and direct application.*
 
 1.  What is the difference between **[Term A]** and **[Term B]** in the context of **[Concept Name]**?  
-    **Answer:** 
+    **Answer:**
+    ```
+    
+    ```
     > **AI Feedback:** 
 
 2.  What is the purpose of **[Key Component]**?
-    **Answer:** 
+    **Answer:**
+    ```
+    
+    ```
     > **AI Feedback:** 
 
 3.  In your own words, how does **[Process X]** work?
-    **Answer:** 
+    **Answer:**
+    ```
+    
+    ```
     > **AI Feedback:** 
 
 ---
@@ -76,15 +85,24 @@
 *These questions require synthesis, exploring trade-offs, and connecting concepts.*
 
 1.  **Causality & Trade-Offs:** You were instructed to use **[Technique A]**. What are the trade-offs of this approach compared to **[Alternative Technique B]**? What would happen if you didn't use it at all?
-    **Answer:** 
+    **Answer:**
+    ```
+    
+    ```
     > **AI Feedback:** 
 
 2.  **Connecting Concepts:** How does **[Concept Name]** relate to the broader topic of **[Related Field]** that we covered previously?
-    **Answer:** 
+    **Answer:**
+    ```
+    
+    ```
     > **AI Feedback:** 
 
 3.  **Critical Thinking:** A common mistake when implementing **[Concept Name]** is **[Common Mistake]**. Why does this happen, and how can you prevent it?
-    **Answer:** 
+    **Answer:**
+    ```
+    
+    ```
     > **AI Feedback:** 
 
 ---
