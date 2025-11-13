@@ -10,12 +10,12 @@ public class InMemoryEmployersRepository : IEmployersRepository
 {
     private static readonly List<Employer> _employers = new();
 
-    public Task CreateEmployer(Employer employer)
+    public Task<Employer> CreateEmployer(Employer employer)
     {
         employer.Id = Guid.NewGuid();
         _employers.Add(employer);
 
-        return Task.CompletedTask;
+        return Task.FromResult(employer);
     }
 
     public Task<IEnumerable<Employer>> GetAllEmployers()
@@ -30,7 +30,7 @@ public class InMemoryEmployersRepository : IEmployersRepository
         return Task.FromResult(employer);
     }
 
-    public Task<bool> UpdateEmployer(Guid id, UpdateEmployerDto updatedEmployer)
+    public Task<bool> UpdateEmployer(Guid id, Employer updatedEmployer)
     {
         Employer? employer = _employers.FirstOrDefault(employer => employer.Id == id);
 
