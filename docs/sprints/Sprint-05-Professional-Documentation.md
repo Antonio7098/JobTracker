@@ -36,10 +36,10 @@
     - [X] **Sub-task 3.1:** Create a new, comprehensive `README.md` file in the project root. It should include a project title, a brief description, a list of features, and a "Getting Started" section explaining how to run the project (including the Docker command for MySQL).
     - [X] **Sub-task 3.2:** In the `docs/` folder, create a new file `ARCHITECTURE.md`. In this file, write a few paragraphs explaining the key patterns you've used: Minimal APIs, the Repository Pattern, DTOs, and the overall folder structure.
 
-- [ ] **Task 4: Apply Formal Versioning**
+- [X] **Task 4: Apply Formal Versioning**
     > *Description: Officially version the project and tag it in Git, creating a permanent marker for this release.*
     - [X] **Sub-task 4.1:** In `JobTracker.Api.csproj`, add the version number `<Version>0.1.0</Version>` inside the `<PropertyGroup>`.
-    - [ ] **Sub-task 4.2:** Commit this change with the message `chore: set project version to 0.1.0`.
+    - [X] **Sub-task 4.2:** Commit this change with the message `chore: set project version to 0.1.0`.
     - [ ] **Sub-task 4.3:** After committing, create an annotated Git tag for this release with the command: `git tag -a v0.1.0 -m "v0.1.0: Initial release with persistence and documentation"`.
     - [ ] **Sub-task 4.4:** Push your commits and the new tag to the remote repository.
 
@@ -77,7 +77,7 @@
 *These questions focus on recall, definition, and direct application.*
 
 1.  What problem does OpenAPI (Swagger) solve? What would you have to do to document your API if you didn't use a tool like this?
-    **Answer:** 
+    **Answer:** It automaticlaly updates when you make changes to your api, saving you from having to constantly update your documentation,
     > **AI Feedback:** 
 
 2.  What is the purpose of the `<GenerateDocumentationFile>true</GenerateDocumentationFile>` setting in the `.csproj` file? What file does it create?
