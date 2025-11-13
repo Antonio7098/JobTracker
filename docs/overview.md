@@ -27,12 +27,13 @@ This checklist is our roadmap. Each item directly corresponds to a skill listed 
 | **IV. Contracts** | **Data Transfer Objects (DTOs)** | Define a stable public contract for the API, protecting internal domain models from breaking changes. |
 | **V. Structure** | **Route Groups & Extension Methods** | Logically organize endpoints and apply common middleware/settings efficiently for clean, readable code. |
 | **VI. Persistence** | **Entity Framework Core & MySQL** | Introduce a real database (**MySQL**) using an ORM. Manage schema changes with **Code-First Migrations**. |
-| **VII. Configuration** | **Externalised Configuration** | Store secrets and connection strings in `appsettings.json` and user secrets, not hardcoded in the source. |
-| **VIII. Performance** | **Asynchronous Programming** | Implement `async`/`await` for all I/O-bound database operations to ensure the API is scalable and efficient. |
-| **IX. Robustness** | **Validation & Structured Error Handling** | Handle invalid inputs gracefully and implement a consistent strategy for error responses. |
-| **X. Quality** | **BDD: SpecFlow/Gherkin** | Write acceptance tests that verify the API's behavior against user requirements from the outside-in. |
-| **XI. Quality** | **Unit Testing** | Write unit tests to verify individual components (like services or logic classes) in isolation. |
-| **XII. Automation** | **CI/CD with GitHub Actions** | Create a Continuous Integration pipeline that automatically builds the project and runs all tests on every commit. |
+| **VII Documentation (Sprint 5)** | **Detailed, Professional Documentation** | Establish high-quality docs: architecture overview, setup guides, API reference (OpenAPI/Swagger), contribution guide, changelog, and diagrams. Optionally publish via DocFX/Docusaurus for a browsable site. |
+| **VIII. Configuration** | **Externalised Configuration** | Store secrets and connection strings in `appsettings.json` and user secrets, not hardcoded in the source. |
+| **IX. Performance** | **Asynchronous Programming** | Implement `async`/`await` for all I/O-bound database operations to ensure the API is scalable and efficient. |
+| **X. Robustness** | **Validation & Structured Error Handling** | Handle invalid inputs gracefully and implement a consistent strategy for error responses. |
+| **XI. Quality** | **BDD: SpecFlow/Gherkin** | Write acceptance tests that verify the API's behavior against user requirements from the outside-in. |
+| **XII. Quality** | **Unit Testing** | Write unit tests to verify individual components (like services or logic classes) in isolation. |
+| **XIII. Automation** | **CI/CD with GitHub Actions** | Create a Continuous Integration pipeline that automatically builds the project and runs all tests on every commit. |
 
 ---
 
