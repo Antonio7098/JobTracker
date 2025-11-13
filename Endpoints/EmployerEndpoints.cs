@@ -46,7 +46,7 @@ public static class EmployersEndpointsExtensions
 
         group.MapPut("/{id}", async (Guid id, UpdateEmployerDto updateEmployerDto, IEmployersRepository repo) =>
         {
-            var wasFound = await repo.UpdateEmployer(id, updateEmployerDto);
+            var wasFound = await repo.UpdateEmployer(id, updateEmployerDto.ToEmployer());
 
             if (wasFound)
             {

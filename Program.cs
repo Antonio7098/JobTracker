@@ -6,13 +6,18 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IEmployersRepository, InMemoryEmployersRepository>();
+builder.Services.AddScoped<IEmployersRepository, MySqlEmployersRepository>();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultCOnnection")
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 0));
+
 builder.Services.AddDbContext<JobTrackerDbContext>(options =>
 {
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-});
+    
+    options.UseMySql(connectionString, serverVersion);
+
+}, ServiceLifetime.Scoped);
 
 var app = builder.Build();
 

@@ -17,13 +17,13 @@
 
 - [ ] **Task 1: [Task 1 Name]**
     > *Description: [Briefly describe the purpose of this task.]*
-    - [ ] Sub-task 1.1: [First step]
-    - [ ] Sub-task 1.2: [Second step]
+    - [ ] **Sub-task 1.1:** [First step]
+    - [ ] **Sub-task 1.2:** [Second step]
 
 - [ ] **Task 2: [Task 2 Name]**
     > *Description: [Briefly describe the purpose of this task.]*
-    - [ ] Sub-task 2.1: [First step]
-    - [ ] Sub-task 2.2: [Second step]
+    - [ ] **Sub-task 2.1:** [First step]
+    - [ ] **Sub-task 2.2:** [Second step]
 
 ---
 
