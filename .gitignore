@@ -483,3 +483,9 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 
+
+# Tool-generated local configuration
+.config/
+
+# Stray error files
+System.InvalidOperationException:

@@ -17,23 +17,23 @@ To build a complete, production-ready backend **REST API** using **ASP.NET Core 
 
 ## ✅ Key Concepts & Skills Checklist
 
-This checklist is our roadmap. Each item directly corresponds to a skill listed on your CV.
+This checklist tracks our progress sprint-by-sprint.
 
-| Stage | Concept/Feature | Purpose & Rationale (The "Why") |
-| :--- | :--- | :--- |
-| **I. Foundation** | **C# & OOP Fundamentals** | Define classes, properties, and the one-to-many relationship. The bedrock of the domain model. |
-| **II. API Layer** | **Minimal APIs** | Implement basic endpoints (GET, POST, PUT, DELETE) for both resources. |
-| **III. Architecture** | **Repository Pattern & DI** | Decouple business logic from data access. Use Dependency Injection to manage services like repositories. |
-| **IV. Contracts** | **Data Transfer Objects (DTOs)** | Define a stable public contract for the API, protecting internal domain models from breaking changes. |
-| **V. Structure** | **Route Groups & Extension Methods** | Logically organize endpoints and apply common middleware/settings efficiently for clean, readable code. |
-| **VI. Persistence** | **Entity Framework Core & MySQL** | Introduce a real database (**MySQL**) using an ORM. Manage schema changes with **Code-First Migrations**. |
-| **VII Documentation (Sprint 5)** | **Detailed, Professional Documentation** | Establish high-quality docs: architecture overview, setup guides, API reference (OpenAPI/Swagger), contribution guide, changelog, and diagrams. Optionally publish via DocFX/Docusaurus for a browsable site. |
-| **VIII. Configuration** | **Externalised Configuration** | Store secrets and connection strings in `appsettings.json` and user secrets, not hardcoded in the source. |
-| **IX. Performance** | **Asynchronous Programming** | Implement `async`/`await` for all I/O-bound database operations to ensure the API is scalable and efficient. |
-| **X. Robustness** | **Validation & Structured Error Handling** | Handle invalid inputs gracefully and implement a consistent strategy for error responses. |
-| **XI. Quality** | **BDD: SpecFlow/Gherkin** | Write acceptance tests that verify the API's behavior against user requirements from the outside-in. |
-| **XII. Quality** | **Unit Testing** | Write unit tests to verify individual components (like services or logic classes) in isolation. |
-| **XIII. Automation** | **CI/CD with GitHub Actions** | Create a Continuous Integration pipeline that automatically builds the project and runs all tests on every commit. |
+| Status | Sprint | Concept/Feature | Purpose & Rationale (The "Why") |
+| :--- | :--- | :--- | :--- |
+| [x] | **Sprint 1** | **Foundation:** C# & OOP | Define classes, properties, and the one-to-many relationship. The bedrock of the domain model. |
+| [x] | **Sprint 2** | **API Layer:** Minimal APIs | Implement basic endpoints (GET, POST) for the API. |
+| [x] | **Sprint 2** | **Architecture:** Repository & DI | Decouple business logic from data access using Dependency Injection. |
+| [x] | **Sprint 3** | **Contracts:** DTOs | Define a stable public contract for the API, protecting internal domain models. |
+| [x] | **Sprint 3** | **Structure:** Route Groups | Logically organize endpoints for clean, readable code. |
+| [x] | **Sprint 4** | **Persistence:** EF Core & MySQL | Introduce a real database using an ORM and manage schema with migrations. |
+| [x] | **Sprint 4** | **Configuration:** Connection Strings | Externalize database connection strings from source code into `appsettings.json`. |
+| [x] | **Sprint 4** | **Performance:** Async/Await | Implement `async`/`await` for all I/O-bound database operations to ensure a scalable API. |
+| [x] | **Sprint 5** | **Documentation:** OpenAPI & Markdown | Generate live API documentation (Swagger) and create high-level project guides. |
+| [ ] | **Sprint 6** | **Robustness:** Validation & Error Handling | Handle invalid inputs gracefully and implement a consistent strategy for error responses. |
+| [ ] | **Sprint 7** | **Quality:** Unit Testing | Write unit tests to verify individual components (like services) in isolation. |
+| [ ] | **Sprint 8** | **Quality:** BDD/Acceptance Testing | Write acceptance tests that verify the API's behavior against user requirements. |
+| [ ] | **Sprint 9** | **Automation:** CI/CD with GitHub Actions | Create a pipeline that automatically builds the project and runs all tests on every commit. |
 
 ---
 
