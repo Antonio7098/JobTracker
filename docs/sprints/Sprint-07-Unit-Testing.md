@@ -40,7 +40,7 @@
 - [ ] **Task 2: Create a Test Project**
     > *Description: Set up a separate project for your tests following .NET conventions.*
     - [X] **Sub-task 2.1:** Use the `dotnet` CLI to create a new xUnit test project named `JobTracker.Api.Tests` in your solution directory.
-    - [ ] **Sub-task 2.2:** Add a project reference from the test project to the main `JobTracker.Api` project.
+    - [X] **Sub-task 2.2:** Add a project reference from the test project to the main `JobTracker.Api` project.
     - [ ] **Sub-task 2.3:** Install the necessary NuGet packages:
         - `xunit` (should be included by default)
         - `xunit.runner.visualstudio` (for IDE test discovery)
