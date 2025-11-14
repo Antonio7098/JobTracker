@@ -76,6 +76,56 @@ Create a list of small, verifiable tasks that guide the user toward answering th
     - [ ] Push commits and tags to remote
 ```
 
+### Step 4.6: Plan the Commit Strategy
+**Guide the user to think about logical commit boundaries during sprint planning.** Help them understand when to commit and what to include.
+
+**Commit Strategy Principles:**
+- **Logical Units:** Group related changes that form a complete, revertable unit
+- **Atomic Commits:** Each commit should represent one cohesive change
+- **Meaningful Boundaries:** Separate setup, implementation, refactoring, and documentation
+
+**Typical Sprint Commit Pattern:**
+```
+Commit 1: Setup/Infrastructure
+  - Project scaffolding, package installation, configuration
+  - Can be reverted without affecting feature implementation
+  
+Commit 2: Core Implementation
+  - Main feature/functionality (may combine multiple tasks if cohesive)
+  - Include related tests if they're part of the same logical unit
+  - Use detailed commit body to explain approach and decisions
+  
+Commit 3: Optional Refactoring/Enhancement
+  - Experimental changes or optimizations
+  - Separate so they can be reverted independently
+  
+Commit 4: Documentation
+  - README updates, architecture docs, comments
+  - Separate concern from implementation
+```
+
+**When to Use Detailed Commit Messages (with body):**
+- ✅ Non-obvious design decisions (e.g., "Why did we choose approach X over Y?")
+- ✅ Complex implementations that need context
+- ✅ Breaking changes or major refactors
+- ✅ When grouping multiple related sub-tasks together
+
+**When Simple Messages Are Sufficient:**
+- ✅ Self-explanatory changes (e.g., "docs: fix typo in README")
+- ✅ Small, atomic updates (e.g., "feat: add Name property to Employer")
+- ✅ Standard operations (e.g., "chore: update package version")
+
+**Example Sprint Commit Guidance to Include:**
+For a testing sprint, you might guide the user to plan:
+```
+1. test(setup): configure xUnit test project with dependencies
+2. test(repositories): add comprehensive CRUD and edge case tests
+   [Use body to list coverage: happy path + edge cases]
+3. refactor(tests): migrate from InMemory DB to Moq mocking (optional)
+   [Use body to explain rationale and trade-offs]
+4. docs: update README with testing instructions
+```
+
 ### Step 5: Assemble the Sprint File
 - Create a new file named `docs/sprints/Sprint-XX-[Concept-Name].md`.
 - Use `docs/sprints/sprint-learning-template.md` as the base template.
