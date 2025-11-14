@@ -8,7 +8,7 @@ Content-Type: application/json
 ###
 GET http://localhost:5035/employers
 ###
-GET http://localhost:5035/employers/08de2295-ee35-42cf-8a1b-f8709651a5e1
+GET http://localhost:5035/employers/08de2295-ee35-42cf-8a1b-f8709651a5e7
 ###
 DELETE http://localhost:5035/employers/08de2295-ee35-42cf-8a1b-f8709651a5e1
 ###
@@ -18,3 +18,5 @@ Content-Type: application/json
 {
     "Name": "SageTwo"
 }
+###
+GET http://localhost:5035/employers/test-error

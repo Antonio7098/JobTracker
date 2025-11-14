@@ -1,0 +1,61 @@
+### Test 1: Valid employer with description (should succeed - 201)
+POST http://localhost:5035/employers
+Content-Type: application/json
+
+{
+    "name": "TechCorp",
+    "companyDescription": "A leading technology company"
+}
+
+### Test 2: Empty name (should fail - 422)
+POST http://localhost:5035/employers
+Content-Type: application/json
+
+{
+    "name": "",
+    "companyDescription": "Some description"
+}
+
+### Test 3: Whitespace-only name (should fail - 422)
+POST http://localhost:5035/employers
+Content-Type: application/json
+
+{
+    "name": "   ",
+    "companyDescription": "Some description"
+}
+
+### Test 4: Name too long - over 100 chars (should fail - 422)
+POST http://localhost:5035/employers
+Content-Type: application/json
+
+{
+    "name": "This is a very long company name that exceeds one hundred characters and should definitely fail validation because we set max length to one hundred",
+    "companyDescription": "Some description"
+}
+
+### Test 5: Description too long - over 500 chars (should fail - 422)
+POST http://localhost:5035/employers
+Content-Type: application/json
+
+{
+    "name": "ValidName",
+    "companyDescription": "This is an extremely long description that goes way over five hundred characters and should fail validation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum and even more text to exceed the limit."
+}
+
+### Test 6: Valid without description (should succeed - 201)
+POST http://localhost:5035/employers
+Content-Type: application/json
+
+{
+    "name": "MinimalCorp"
+}
+
+### Test 7: Empty name PUT (should fail - 422)
+PUT http://localhost:5035/employers/08de2370-94fb-4075-800e-9e81add77b84
+Content-Type: application/json
+
+{
+    "name": "",
+    "companyDescription": "Some description"
+}

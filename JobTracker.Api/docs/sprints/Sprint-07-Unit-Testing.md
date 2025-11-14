@@ -17,15 +17,29 @@
 
 ## ✅ Task List
 
-- [ ] **Task 1: Research & Plan the Testing Strategy**
+- [X] **Task 1: Research & Plan the Testing Strategy**
     > *Description: Before writing tests, you need to understand the testing landscape in .NET and decide what to test.*
-    - [ ] **Sub-task 1.1:** Research the three main testing frameworks for .NET (xUnit, NUnit, MSTest). Which one is most commonly used in modern .NET projects? Why?
-    - [ ] **Sub-task 1.2:** Read about the **Test Pyramid** (Unit → Integration → E2E). Where do unit tests fit, and what do they aim to verify?
-    - [ ] **Sub-task 1.3:** Identify which components in your project should be unit tested. Should you test DTOs? Endpoints? The repository? Why or why not?
+    - [X] **Sub-task 1.1:** Research the three main testing frameworks for .NET (xUnit, NUnit, MSTest). Which one is most commonly used in modern .NET projects? Why?
+    ```
+    XUnit is most commonly used. Why?
+        - Mictosoft themselves have adopted it, setting a strong precedent.
+        - It is built for parallel test execution by default, making it faster and more efficient in CI?CD pipelines.
+        - It promotes better architecture with its opinionated design.
+
+    NUnit has a rich ecosystem and is used in legacy frameworks.
+    ```
+    - [X] **Sub-task 1.2:** Read about the **Test Pyramid** (Unit → Integration → E2E). Where do unit tests fit, and what do they aim to verify?
+    ```
+    Unit tests are at the base of the pyramid, and aim to verify the individual components (functions, methods, etc...). They are fast, with no external dependencies, and should be the most numerous tests.
+    ```
+    - [X] **Sub-task 1.3:** Identify which components in your project should be unit tested. Should you test DTOs? Endpoints? The repository? Why or why not?
+    ```
+    We should test the repository methods, as these are individual components. Endpoints would be integration tests, and DTOs have no methods to test.
+    ```
 
 - [ ] **Task 2: Create a Test Project**
     > *Description: Set up a separate project for your tests following .NET conventions.*
-    - [ ] **Sub-task 2.1:** Use the `dotnet` CLI to create a new xUnit test project named `JobTracker.Api.Tests` in your solution directory.
+    - [X] **Sub-task 2.1:** Use the `dotnet` CLI to create a new xUnit test project named `JobTracker.Api.Tests` in your solution directory.
     - [ ] **Sub-task 2.2:** Add a project reference from the test project to the main `JobTracker.Api` project.
     - [ ] **Sub-task 2.3:** Install the necessary NuGet packages:
         - `xunit` (should be included by default)
