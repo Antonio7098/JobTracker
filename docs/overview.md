@@ -30,7 +30,7 @@ This checklist tracks our progress sprint-by-sprint.
 | [x] | **Sprint 4** | **Configuration:** Connection Strings | Externalize database connection strings from source code into `appsettings.json`. |
 | [x] | **Sprint 4** | **Performance:** Async/Await | Implement `async`/`await` for all I/O-bound database operations to ensure a scalable API. |
 | [x] | **Sprint 5** | **Documentation:** OpenAPI & Markdown | Generate live API documentation (Swagger) and create high-level project guides. |
-| [ ] | **Sprint 6** | **Robustness:** Validation & Error Handling | Handle invalid inputs gracefully and implement a consistent strategy for error responses. |
+| [x] | **Sprint 6** | **Robustness:** Validation & Error Handling | Handle invalid inputs gracefully and implement a consistent strategy for error responses. |
 | [ ] | **Sprint 7** | **Quality:** Unit Testing | Write unit tests to verify individual components (like services) in isolation. |
 | [ ] | **Sprint 8** | **Quality:** BDD/Acceptance Testing | Write acceptance tests that verify the API's behavior against user requirements. |
 | [ ] | **Sprint 9** | **Automation:** CI/CD with GitHub Actions | Create a pipeline that automatically builds the project and runs all tests on every commit. |

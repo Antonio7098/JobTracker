@@ -44,6 +44,38 @@ Create a list of small, verifiable tasks that guide the user toward answering th
         - [ ] Sub-task: Define `DbSet<>` properties for `Employer` and `JobVacancy`.
         - [ ] Sub-task: Research and then override the `OnModelCreating` method to configure the one-to-many relationship between the two tables explicitly.
 
+### Step 4.5: Include Professional Project Management Tasks
+**Every sprint should conclude with professional project management tasks.** These reinforce real-world development practices:
+
+- **Documentation Updates:**
+    - Update `README.md` to reflect new features, dependencies, or setup requirements
+    - Update `docs/ARCHITECTURE.md` if architectural patterns or layers changed
+    - Add new folders to the "Project Structure" section if created
+
+- **Versioning & Release Management:**
+    - Increment the version number in `.csproj` following Semantic Versioning (SemVer)
+        - MAJOR version for breaking changes
+        - MINOR version for new features (backward-compatible)
+        - PATCH version for bug fixes
+    - Create annotated Git tags for significant milestones
+    - Write clear, conventional commit messages
+
+- **Code Quality & Organization:**
+    - Ensure code follows project conventions
+    - Add or update XML documentation comments if applicable
+    - Review and clean up any temporary test files or unused code
+
+**Example Final Task Block:**
+```markdown
+- [ ] **Task: Update Project Documentation & Version**
+    - [ ] Update README.md with [new feature/changes]
+    - [ ] Update ARCHITECTURE.md if patterns changed
+    - [ ] Increment version in .csproj (0.X.0 → 0.Y.0)
+    - [ ] Commit with message: `[type]: [description]`
+    - [ ] Create annotated tag: `git tag -a vX.Y.Z -m "Release message"`
+    - [ ] Push commits and tags to remote
+```
+
 ### Step 5: Assemble the Sprint File
 - Create a new file named `docs/sprints/Sprint-XX-[Concept-Name].md`.
 - Use `docs/sprints/sprint-learning-template.md` as the base template.
