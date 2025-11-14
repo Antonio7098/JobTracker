@@ -30,7 +30,38 @@ The primary reasons for this are:
 
 Mapping between domain models and DTOs is handled by simple extension methods in the `/Maps` directory.
 
-## 4. Folder Structure
+## 4. Validation & Error Handling Strategy
+
+The API implements a comprehensive, consistent approach to validation and error handling.
+
+### Input Validation (API Layer)
+
+The project uses **FluentValidation** to validate all incoming DTOs at the API layer before they reach business logic or the database.
+
+- **Validator Classes:** Each DTO that requires validation has a corresponding validator class (e.g., `CreateEmployerDtoValidator` in `/Validators`).
+- **Dependency Injection:** Validators are registered in the DI container via `AddValidatorsFromAssemblyContaining<Program>()` in `Program.cs`. FluentValidation automatically discovers all validator classes in the assembly.
+- **Explicit Validation in Endpoints:** Validation is triggered explicitly in each endpoint by injecting `IValidator<TDto>` and calling `ValidateAsync()`. If validation fails, the endpoint returns a `422 Unprocessable Entity` response using the Problem Details standard.
+
+### Error Response Standard (RFC 7807 Problem Details)
+
+All error responses follow the **RFC 7807 Problem Details** standard, providing consistent, machine-readable error information with a predictable JSON structure.
+
+**Error Types Handled:**
+- **404 Not Found:** Resource doesn't exist (e.g., requesting an employer by a non-existent ID)
+- **422 Unprocessable Entity:** Validation failure with detailed field-level errors
+- **500 Internal Server Error:** Unexpected server errors (caught by global exception handler)
+
+### Global Exception Handler
+
+A global exception handler is configured in `Program.cs` using `app.UseExceptionHandler()`. This middleware catches any unhandled exceptions that occur during request processing and returns a consistent Problem Details response with a `500 Internal Server Error` status code.
+
+**Environment-Aware Behavior:**
+- **Development:** Error details are visible in the response for debugging
+- **Production:** Error details are hidden for security, returning generic messages
+
+This prevents unexpected exceptions from leaking sensitive information or returning inconsistent error formats to API clients.
+
+## 5. Folder Structure
 
 The project follows a feature-oriented folder structure:
 

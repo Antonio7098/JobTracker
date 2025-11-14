@@ -13,6 +13,8 @@ This project is a REST API for a simple job tracking application. It has been bu
 - **RESTful API:** Full CRUD (Create, Read, Update, Delete) operations for `Employer` resources.
 - **Layered Architecture:** Clear separation of concerns using the Repository Pattern to decouple business logic from data access.
 - **Data Transfer Objects (DTOs):** Protects the internal domain model and provides a stable public API contract.
+- **Input Validation:** FluentValidation library provides comprehensive, testable validation rules with clear error messages.
+- **Standardized Error Handling:** RFC 7807 Problem Details format for all error responses (404, 422, 500) with consistent structure.
 - **EF Core & MySQL Persistence:** Uses Entity Framework Core for data persistence with a MySQL database.
 - **Interactive API Documentation:** Integrated Swagger/OpenAPI documentation for live, interactive API exploration and testing.
 - **Containerized Database:** Uses Docker to run the MySQL database for a consistent and isolated development environment.
@@ -24,6 +26,7 @@ This project is a REST API for a simple job tracking application. It has been bu
 - **Database:** MySQL
 - **ORM:** Entity Framework Core 8
 - **API Documentation:** Swashbuckle (Swagger/OpenAPI)
+- **Validation:** FluentValidation
 - **Containerization:** Docker
 
 ## Getting Started
@@ -81,6 +84,44 @@ The following endpoints are available for the `Employer` resource.
 | `PUT`  | `/employers/{id}` | Updates an existing employer.  |
 | `DELETE`| `/employers/{id}` | Deletes an employer by ID.     |
 
+## Error Handling
+
+This API uses the **RFC 7807 Problem Details** standard for all error responses, providing consistent, machine-readable error information.
+
+### HTTP Status Codes
+
+| Status Code | Meaning | When It's Used |
+|:-----------|:--------|:--------------|
+| `404 Not Found` | Resource doesn't exist | Requesting an employer by an ID that doesn't exist |
+| `422 Unprocessable Entity` | Validation failed | Creating/updating with invalid data (empty name, exceeds max length) |
+| `500 Internal Server Error` | Unexpected server error | Database connection failure or other unexpected errors |
+
+### Error Response Format
+
+All errors follow the RFC 7807 Problem Details format:
+
+```json
+{
+  "type": "https://tools.ietf.org/html/rfc9110#section-15.5.23",
+  "title": "One or more validation errors occurred.",
+  "status": 422,
+  "errors": {
+    "Name": [
+      "'Name' must not be empty."
+    ]
+  }
+}
+```
+
+### Input Validation
+
+The API uses **FluentValidation** to validate all incoming requests:
+
+- **Name** (required): Must not be empty or whitespace, maximum 100 characters
+- **CompanyDescription** (optional): If provided, maximum 500 characters
+
+Invalid requests return `422 Unprocessable Entity` with detailed field-level error messages.
+
 ## Project Structure
 
 - **/Data:** Contains the EF Core `DbContext`.
@@ -90,3 +131,4 @@ The following endpoints are available for the `Employer` resource.
 - **/Migrations:** EF Core database migration files.
 - **/Models:** Core C# domain model classes (`Employer`, `JobVacancy`).
 - **/Services:** Contains the business logic and data access layer (e.g., `IEmployersRepository`).
+- **/Validators:** Contains FluentValidation rules for input validation.
