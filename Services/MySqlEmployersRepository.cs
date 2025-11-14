@@ -42,7 +42,8 @@ public class MySqlEmployersRepository : IEmployersRepository
         }
 
         employer.Name = updatedEmployer.Name;
-
+        employer.CompanyDescription = updatedEmployer.CompanyDescription;
+        
         await _dbContext.SaveChangesAsync();
 
         return true;

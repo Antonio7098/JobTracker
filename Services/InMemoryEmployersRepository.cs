@@ -40,6 +40,11 @@ public class InMemoryEmployersRepository : IEmployersRepository
         }
 
         employer.Name = updatedEmployer.Name;
+        
+        if (employer.CompanyDescription is not null)
+        {
+            employer.CompanyDescription = updatedEmployer.CompanyDescription;
+        }
 
         return Task.FromResult(true);
     }

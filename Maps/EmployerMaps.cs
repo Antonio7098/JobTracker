@@ -11,7 +11,8 @@ public static class EmployerMaps
         return new EmployerDto
         {
             Id = employer.Id,
-            Name = employer.Name
+            Name = employer.Name,
+            CompanyDescription = employer.CompanyDescription
         };
     }
 
@@ -19,7 +20,8 @@ public static class EmployerMaps
     {
         return new Employer
         {
-            Name = createEmployerDto.Name
+            Name = createEmployerDto.Name,
+            CompanyDescription = createEmployerDto.CompanyDescription
         };
     }
 
@@ -27,7 +29,8 @@ public static class EmployerMaps
     {
         return new Employer
         {
-            Name = updateEmployerDto.Name
+            Name = updateEmployerDto.Name,
+            CompanyDescription = updateEmployerDto.CompanyDescription
         };
     }
 }
