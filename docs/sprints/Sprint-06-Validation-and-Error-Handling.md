@@ -19,39 +19,51 @@
 
 ## ✅ Task List
 
-- [ ] **Task 1: Research Validation Approaches**
+- [X] **Task 1: Research Validation Approaches**
     > *Description: Before implementing validation, you need to understand the available approaches and their trade-offs.*
     - [X] **Sub-task 1.1:** Research the difference between **Data Annotations** (e.g., `[Required]`, `[MaxLength]`) and **FluentValidation**. What are the pros and cons of each?
     **Answer:**
+    ```
+    Data Annotations are applied directly to your models and dts's. They are simpler and require less knowledge overhead. Fluent Validation is a package that you get fom Nuget. It allows for much more coplex validation, and separation of concerns: validation logic lives in separate validator classes, not cluttering the dtos, and is more tastable and reusable.
+    ```
     - [X] **Sub-task 1.2:** Read about where validation should occur in a multi-layered application. Should it happen at the API layer, service layer, or both? Why?
-    - [ ] **Sub-task 1.3:** Document your findings in a comment or markdown note explaining when you would choose Data Annotations vs FluentValidation.
+    **Answer:**
+    ```
+    API layer valdates the structure and format of the input eg. "is the Name field present". Service/repository validates the database acces, or complex ligic, eg "does an employer with this name already exist". Both layers are importsnt.
+    ```
+    - [X] **Sub-task 1.3:** Document your findings in a comment or markdown note explaining when you would choose Data Annotations vs FluentValidation.
 
-- [ ] **Task 2: Implement FluentValidation for DTOs**
+- [X] **Task 2: Implement FluentValidation for DTOs**
     > *Description: Add FluentValidation to the project and create validators for your DTOs.*
-    - [ ] **Sub-task 2.1:** Use NuGet to find and install the appropriate FluentValidation package for ASP.NET Core.
-    - [ ] **Sub-task 2.2:** Create a `Validators` folder in your project.
-    - [ ] **Sub-task 2.3:** Create a `CreateEmployerDtoValidator` class that validates `CreateEmployerDto`. Define rules for:
+    - [X] **Sub-task 2.1:** Use NuGet to find and install the appropriate FluentValidation package for ASP.NET Core.
+    - [X] **Sub-task 2.2:** Create a `Validators` folder in your project.
+    - [X] **Sub-task 2.3:** Create a `CreateEmployerDtoValidator` class that validates `CreateEmployerDto`. Define rules for:
         - `Name` (required, max length, not just whitespace)
         - `CompanyDescription` (optional but if provided, has a max length)
-    - [ ] **Sub-task 2.4:** Create an `UpdateEmployerDtoValidator` with similar rules.
-    - [ ] **Sub-task 2.5:** Research and then register FluentValidation with the Dependency Injection container in `Program.cs`. How does the framework discover your validators?
 
-- [ ] **Task 3: Understand HTTP Status Codes & Problem Details**
+    **Note:**
+    ```
+    Company description was added to the employer model at this point.
+    ```
+    - [X] **Sub-task 2.4:** Create an `UpdateEmployerDtoValidator` with similar rules.
+    - [X] **Sub-task 2.5:** Research and then register FluentValidation with the Dependency Injection container in `Program.cs`. How does the framework discover your validators?
+
+- [X] **Task 3: Understand HTTP Status Codes & Problem Details**
     > *Description: Before handling errors, understand the semantic meaning of HTTP status codes and the Problem Details standard.*
-    - [ ] **Sub-task 3.1:** Research the semantic difference between:
+    - [X] **Sub-task 3.1:** Research the semantic difference between:
         - `400 Bad Request`
         - `404 Not Found`
         - `422 Unprocessable Entity`
         - `500 Internal Server Error`
-    - [ ] **Sub-task 3.2:** Read about RFC 7807 "Problem Details for HTTP APIs". What problem does it solve? What are the standard fields in a Problem Details response?
-    - [ ] **Sub-task 3.3:** Investigate how ASP.NET Core supports Problem Details. Look into the `TypedResults.ValidationProblem()` and `TypedResults.Problem()` methods.
+    - [X] **Sub-task 3.2:** Read about RFC 7807 "Problem Details for HTTP APIs". What problem does it solve? What are the standard fields in a Problem Details response?
+    - [X] **Sub-task 3.3:** Investigate how ASP.NET Core supports Problem Details. Look into the `TypedResults.ValidationProblem()` and `TypedResults.Problem()` methods.
 
-- [ ] **Task 4: Implement Validation in Endpoints**
+- [X] **Task 4: Implement Validation in Endpoints**
     > *Description: Manually trigger validation in your endpoints and return appropriate error responses.*
-    - [ ] **Sub-task 4.1:** In your `CreateEmployer` endpoint, inject the `IValidator<CreateEmployerDto>` and call its `ValidateAsync()` method.
-    - [ ] **Sub-task 4.2:** If validation fails, return a `ValidationProblem` result with a `422 Unprocessable Entity` status code. Ensure the validation errors are included in the response.
-    - [ ] **Sub-task 4.3:** Repeat this process for the `UpdateEmployer` endpoint.
-    - [ ] **Sub-task 4.4:** Test your validation by sending invalid requests using your `.http` file. Verify the response structure and status codes.
+    - [X] **Sub-task 4.1:** In your `CreateEmployer` endpoint, inject the `IValidator<CreateEmployerDto>` and call its `ValidateAsync()` method.
+    - [X] **Sub-task 4.2:** If validation fails, return a `ValidationProblem` result with a `422 Unprocessable Entity` status code. Ensure the validation errors are included in the response.
+    - [X] **Sub-task 4.3:** Repeat this process for the `UpdateEmployer` endpoint.
+    - [X] **Sub-task 4.4:** Test your validation by sending invalid requests using your `.http` file. Verify the response structure and status codes.
 
 - [ ] **Task 5: Implement "Not Found" Error Handling**
     > *Description: Handle cases where a requested resource doesn't exist.*
