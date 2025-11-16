@@ -72,3 +72,13 @@ The project follows a feature-oriented folder structure:
 - **/Migrations:** Contains EF Core database migration files.
 - **/Models:** Contains the core C# domain model classes.
 - **/Services:** Contains business logic and data access interfaces/implementations (Repositories).
+
+## 6. Testing Strategy
+
+The project includes a dedicated test suite to ensure the reliability and correctness of its data access layer.
+
+- **Framework:** Tests are written using **xUnit**, a modern and flexible testing framework for .NET.
+- **Test Target:** The primary focus of the current test suite is the **Repository Layer** (`MySqlEmployersRepository`).
+- **Methodology:** We use the `Microsoft.EntityFrameworkCore.InMemory` provider to test the repository. This approach allows us to test our repository's logic against a database-like system that uses the real EF Core query and change tracking infrastructure, without the overhead of a real database. These are best described as fast **integration tests** rather than pure unit tests.
+- **Isolation:** Each test method runs against a completely isolated, in-memory database with a unique name, ensuring that tests do not interfere with one another.
+- **Mocking:** Mocking (with Moq) is reserved for future tests of higher-level components (like services), where the goal will be to isolate business logic from the repository itself.
