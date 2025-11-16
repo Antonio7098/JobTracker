@@ -48,15 +48,18 @@ JobTracker/
    dotnet run
    ```
 
-5. **Run tests:**
-   ```bash
-   cd JobTracker.Api.Tests
-   dotnet test
-   ```
+## 🧪 Running Tests
+
+To run the full suite of unit and integration tests, execute the following command from the root directory of the solution:
+
+```bash
+dotnet test
+```
 
 ## 📚 Documentation
 
 - **[API Documentation](JobTracker.Api/README.md)** - Detailed information about the API project
+- **[Test Project Documentation](JobTracker.Api.Tests/README.md)** - Information on the testing project and strategies
 - **[Architecture Overview](docs/ARCHITECTURE.md)** - System design and architecture decisions
 - **[Contributing Guide](docs/CONTRIBUTING.md)** - Commit conventions and workflow
 - **[Learning Sprints](docs/sprints/)** - Sprint-by-sprint learning documentation
@@ -68,7 +71,8 @@ This project is a learning-focused implementation covering:
 - Repository pattern and service layer architecture
 - Entity Framework Core with MySQL
 - Request validation with FluentValidation
-- Unit testing with xUnit and Moq
+- Unit and integration testing with **xUnit**
+- Mocking dependencies with **Moq**
 
 ## 📄 License
 
