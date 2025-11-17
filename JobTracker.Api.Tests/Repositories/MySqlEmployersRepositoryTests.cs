@@ -75,7 +75,7 @@ public class MySqlEmployersRepositoryTests : IDisposable
     }
 
     [Fact]
-    public async Task UpdateEmployer_WhenEmployerExists_UpdatesEmployer()
+    public async Task UpdateEmployerById_WhenEmployerExists_UpdatesEmployer()
     {
         var newEmployer = new Employer{
             Id = Guid.NewGuid(),
