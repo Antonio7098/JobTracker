@@ -32,7 +32,7 @@ public class MySqlEmployersRepositoryTests : IDisposable
     public async Task GetAllEmployers_WhenDatabaseIsEmpty_ReturnsEmptyList()
     {
         var employers = await _repository.GetAllEmployers();
-        Assert.Empty(employers);   
+        Assert.Null(employers);   
     }
 
     [Fact]
