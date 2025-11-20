@@ -18,20 +18,20 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-      steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x'
-      
-      - name: Restore Dependencies
-        run: dotnet restore
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+    
+    - name: Restore Dependencies
+      run: dotnet restore
 
-      - name: Build Project
-        run: dotnet build --no-restore
+    - name: Build Project
+      run: dotnet build --no-restore
 
 
   unit_tests:
