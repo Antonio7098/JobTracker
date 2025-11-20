@@ -1,5 +1,8 @@
 name: CI Build and Test
 
+env:
+  DOTNET_VERSION: 8.0.x
+
 on:
   push:
     branches:
@@ -25,7 +28,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: ${{ env.DOTNET_VERSION }}
     
     - name: Cache NuGet Packages
       uses: actions/cache@v4
@@ -60,7 +63,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Cache NuGet Packages
         uses: actions/cache@v4
@@ -106,7 +109,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Cache NuGet Packages
         uses: actions/cache@v4
