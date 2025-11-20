@@ -106,7 +106,7 @@ public class EmployerManagementSteps
     [When(@"I send a request to retrieve that employer")]
     public async Task WhenISendARequestToRetrieveThatEmployer()
     {
-        var employerId = _scenarioContext["EmployerId"];
+        var employerId = _scenarioContext.Get<Guid>("EmployerId");
 
         var response = await HttpClient.GetAsync($"/employers/{employerId}");
 
@@ -127,7 +127,7 @@ public class EmployerManagementSteps
     [When(@"I send a request to delete that employer")]
     public async Task WhenISendARequestToDeleteThatEmployer()
     {
-        var employerId = _scenarioContext["EmployerId"];
+        var employerId = _scenarioContext.Get<Guid>("EmployerId");
 
         var response = await HttpClient.DeleteAsync($"/employers/{employerId}");
 
@@ -215,7 +215,7 @@ public class EmployerManagementSteps
     [Then(@"the employer should be retrievable from the api")]
     public async Task ThenTheEmployerShouldBeRetrievableFromTheApi()
     {
-        var employerId = _scenarioContext["EmployerId"];
+        var employerId = _scenarioContext.Get<Guid>("EmployerId");
 
         var response = await HttpClient.GetAsync($"/employers/{employerId}");
 
@@ -245,7 +245,7 @@ public class EmployerManagementSteps
     [Then(@"the deleted employer should not be retrievable from the api")]
     public async Task ThenTheDeletedEmployerShouldNotBeRetrievableFromTheApi()
     {
-        var employerId = _scenarioContext["EmployerId"];
+        var employerId = _scenarioContext.Get<Guid>("EmployerId");
 
         var response = await HttpClient.GetAsync($"/employers/{employerId}");
 
