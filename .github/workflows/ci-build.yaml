@@ -10,10 +10,15 @@ on:
       - main
 
 jobs:
+    
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
-    steps:
+    runs-on: ${{ matrix.os }}
+
+      steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -30,7 +35,11 @@ jobs:
 
 
   unit_tests:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
     needs: build
     permissions:
       checks: write
@@ -64,7 +73,11 @@ jobs:
           fail-on-error: true
 
   acceptance_tests:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
     needs: build
     permissions:
       checks: write
