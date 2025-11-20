@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - sprint-09-ci-cd-automation
 
   pull_request:
     branches:
@@ -24,6 +25,9 @@ jobs:
       
       - name: Restore Dependancies
         run: dotnet restore
+
+      - name: Learning Experiment
+        run: echo "This is  test"
 
       - name: Build Project
         run: dotnet build --no-restore 
