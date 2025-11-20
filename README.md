@@ -10,6 +10,7 @@ This repository contains a multi-project .NET solution:
 JobTracker/
 ├── JobTracker.Api/          # Main REST API project
 ├── JobTracker.Api.Tests/    # xUnit test project
+├── JobTracker.Api.AcceptanceTests/    # SpecFlow/Gherkin acceptance tests
 ├── docs/                    # Learning sprints, architecture docs, and guides
 └── JobTracker.Api.sln       # Solution file
 ```
