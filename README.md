@@ -8,11 +8,11 @@ This repository contains a multi-project .NET solution:
 
 ```
 JobTracker/
-├── JobTracker.Api/          # Main REST API project
-├── JobTracker.Api.Tests/    # xUnit test project
+├── JobTracker.Api/                    # Main REST API project
+├── JobTracker.Api.Tests/              # xUnit test project
 ├── JobTracker.Api.AcceptanceTests/    # SpecFlow/Gherkin acceptance tests
-├── docs/                    # Learning sprints, architecture docs, and guides
-└── JobTracker.Api.sln       # Solution file
+├── docs/                              # Learning sprints, architecture docs, and guides
+└── JobTracker.Api.sln                 # Solution file
 ```
 
 ## 🚀 Getting Started
@@ -67,7 +67,8 @@ JobTracker/
 ## 📚 Documentation
 
 - **[API Documentation](JobTracker.Api/README.md)** - Detailed information about the API project
-- **[Test Project Documentation](JobTracker.Api.Tests/README.md)** - Information on the testing project and strategies
+- **[Unit Test Project Documentation](JobTracker.Api.Tests/README.md)** - Information on the testing project and strategies
+- **[Acceptance Testing Project Documentation](JobTracker.Api.Tests/README.md)** - Information on the acceptance testing project and strategies
 - **[Architecture Overview](docs/ARCHITECTURE.md)** - System design and architecture decisions
 - **[Contributing Guide](docs/CONTRIBUTING.md)** - Commit conventions and workflow
 - **[Learning Sprints](docs/sprints/)** - Sprint-by-sprint learning documentation
@@ -81,6 +82,7 @@ This project is a learning-focused implementation covering:
 - Request validation with FluentValidation
 - Unit and integration testing with **xUnit**
 - Mocking dependencies with **Moq**
+- Acceptance testing with SpecFlow/Gherkin
 
 ## 📄 License
 
