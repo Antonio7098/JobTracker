@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobTracker.Api", "JobTracke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobTracker.Api.Tests", "JobTracker.Api.Tests\JobTracker.Api.Tests.csproj", "{9B8EA9B8-6FC1-4B41-A396-C27ED6C53A4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobTracker.Api.AcceptanceTests", "JobTracker.Api.AcceptanceTests\JobTracker.Api.AcceptanceTests.csproj", "{808A55FC-01C0-4F1F-9487-F98C150B59F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{9B8EA9B8-6FC1-4B41-A396-C27ED6C53A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B8EA9B8-6FC1-4B41-A396-C27ED6C53A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B8EA9B8-6FC1-4B41-A396-C27ED6C53A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{808A55FC-01C0-4F1F-9487-F98C150B59F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{808A55FC-01C0-4F1F-9487-F98C150B59F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{808A55FC-01C0-4F1F-9487-F98C150B59F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{808A55FC-01C0-4F1F-9487-F98C150B59F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

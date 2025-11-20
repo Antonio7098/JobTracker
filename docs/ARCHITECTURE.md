@@ -82,3 +82,11 @@ The project includes a dedicated test suite to ensure the reliability and correc
 - **Methodology:** We use the `Microsoft.EntityFrameworkCore.InMemory` provider to test the repository. This approach allows us to test our repository's logic against a database-like system that uses the real EF Core query and change tracking infrastructure, without the overhead of a real database. These are best described as fast **integration tests** rather than pure unit tests.
 - **Isolation:** Each test method runs against a completely isolated, in-memory database with a unique name, ensuring that tests do not interfere with one another.
 - **Mocking:** Mocking (with Moq) is reserved for future tests of higher-level components (like services), where the goal will be to isolate business logic from the repository itself.
+
+### Acceptance Testing (BDD)
+The project also includes a **Behavior-Driven Development (BDD)** acceptance test suite in `JobTracker.Api.AcceptanceTests`.
+
+- **Framework:** Uses **SpecFlow** (Gherkin syntax) and **xUnit**.
+- **Scope:** Tests the entire application stack end-to-end (E2E) using `WebApplicationFactory`.
+- **Database:** Uses an in-memory database provider to simulate a real database environment while maintaining speed and isolation.
+- **Goal:** To verify that the system meets business requirements and behaves correctly from an end-user perspective.
