@@ -21,8 +21,6 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <Version>0.3.0</Version>
-  </PropertyGroup>
+    <Version>0.4.0</Version>
 
 </Project>

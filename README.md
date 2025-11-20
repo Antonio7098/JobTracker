@@ -50,12 +50,19 @@ JobTracker/
    ```
 
 ## 🧪 Running Tests
+ 
+ ### Unit & Integration Tests
+ To run the full suite of unit and integration tests, execute the following command from the root directory of the solution:
+ 
+ ```bash
+ dotnet test
+ ```
 
-To run the full suite of unit and integration tests, execute the following command from the root directory of the solution:
-
-```bash
-dotnet test
-```
+ ### BDD Acceptance Tests
+ To run the SpecFlow acceptance tests:
+ ```bash
+ dotnet test JobTracker.Api.AcceptanceTests/
+ ```
 
 ## 📚 Documentation
 
@@ -78,4 +85,3 @@ This project is a learning-focused implementation covering:
 ## 📄 License
 
 This is a learning project.
-
