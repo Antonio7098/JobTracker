@@ -12,7 +12,7 @@ namespace JobTracker.Api.AcceptanceTests.StepDefinitions;
 public class EmployerManagementSteps
 {
     private readonly ScenarioContext _scenarioContext;
-    private HttpClient HttpClient => (HttpClient)_scenarioContext["HttpClient"];
+    private HttpClient HttpClient => _scenarioContext.Get<HttpClient>("HttpClient");
 
     public EmployerManagementSteps(ScenarioContext scenarioContext)
     {
@@ -89,7 +89,7 @@ public class EmployerManagementSteps
     [When(@"I send a request to create that employer")]
     public async Task WhenISendARequestToCreateThatEmployer()
     {
-        var employer = (CreateEmployerDto)_scenarioContext["NewEmployer"];
+        var employer = _scenarioContext.Get<CreateEmployerDto>("NewEmployer");
 
         var response = await HttpClient.PostAsJsonAsync("/employers", employer);
 
@@ -116,8 +116,8 @@ public class EmployerManagementSteps
     [When(@"I send a request to update that employer")]
     public async Task WhenISendARequestToUpdateThatEmployer()
     {
-        var employerId = (Guid)_scenarioContext["EmployerId"];
-        var updatedEmployer = (UpdateEmployerDto)_scenarioContext["UpdatedEmployer"];
+        var employerId = _scenarioContext.Get<Guid>("EmployerId");
+        var updatedEmployer = _scenarioContext.Get<UpdateEmployerDto>("UpdatedEmployer");
 
         var response = await HttpClient.PutAsJsonAsync($"/employers/{employerId}", updatedEmployer);
 
@@ -169,35 +169,35 @@ public class EmployerManagementSteps
     [Then(@"the response status should be 201 created")]
     public void ThenTheResponseStatusShouldBe201Created()
     {
-        var response = (HttpResponseMessage)_scenarioContext["Response"];
+        var response = _scenarioContext.Get<HttpResponseMessage>("Response");
         response.StatusCode.Should().Be(HttpStatusCode.Created);
     }
 
     [Then(@"the response status should be {int} No Content")]
     public void ThenTheResponseStatusShouldBeNoContent(int statusCode)
     {
-        var response = (HttpResponseMessage)_scenarioContext["Response"];
+        var response = _scenarioContext.Get<HttpResponseMessage>("Response");
         response.StatusCode.Should().Be((HttpStatusCode)statusCode);
     }
 
     [Then(@"the response status should be {int} Unprocessable Content")]
     public void ThenTheResponseStatusShouldBeUnprocessableContent(int statusCode)
     {
-        var response = (HttpResponseMessage)_scenarioContext["Response"];
+        var response = _scenarioContext.Get<HttpResponseMessage>("Response");
         response.StatusCode.Should().Be((HttpStatusCode)statusCode);
     }
 
     [Then(@"the response status should be {int} OK")]
     public void ThenTheResponseStatusShouldBeOK(int statusCode)
     {
-        var response = (HttpResponseMessage)_scenarioContext["Response"];
+        var response = _scenarioContext.Get<HttpResponseMessage>("Response");
         response.StatusCode.Should().Be((HttpStatusCode)statusCode);
     }
 
     [Then(@"the response status should be {int} Not Found")]
     public void ThenTheResponseStatusShouldBeNotFound(int statusCode)
     {
-        var response = (HttpResponseMessage)_scenarioContext["Response"];
+        var response = _scenarioContext.Get<HttpResponseMessage>("Response");
         response.StatusCode.Should().Be((HttpStatusCode)statusCode);
     }
 
@@ -229,14 +229,14 @@ public class EmployerManagementSteps
     [Then(@"the updated employer should be retrievable from the api")]
     public async Task ThenTheUpdatedEmployerShouldBeRetrievableFromTheApi()
     {
-        var employerId = (Guid)_scenarioContext["EmployerId"];
+        var employerId = _scenarioContext.Get<Guid>("EmployerId");
 
         var response = await HttpClient.GetAsync($"/employers/{employerId}");
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
 
         var employer = await response.Content.ReadFromJsonAsync<EmployerDto>();
-        var expectedEmployer = (UpdateEmployerDto)_scenarioContext["UpdatedEmployer"];
+        var expectedEmployer = _scenarioContext.Get<UpdateEmployerDto>("UpdatedEmployer");
 
         employer!.Name.Should().Be(expectedEmployer.Name);
         employer.CompanyDescription.Should().Be(expectedEmployer.CompanyDescription);
