@@ -1,11 +1,11 @@
 name: CI Build Only
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
       - sprint-09-ci-cd-automation
-
   pull_request:
     branches:
       - main
@@ -23,11 +23,8 @@ jobs:
         with:
           dotnet-version: '8.0.x'
       
-      - name: Restore Dependancies
+      - name: Restore Dependencies
         run: dotnet restore
 
-      - name: Learning Experiment
-        run: echo "This is  test"
-
       - name: Build Project
-        run: dotnet build --no-restore 
+        run: dotnet build --no-restore
