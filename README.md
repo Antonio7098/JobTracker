@@ -72,6 +72,7 @@ JobTracker/
 - **[Architecture Overview](docs/ARCHITECTURE.md)** - System design and architecture decisions
 - **[Contributing Guide](docs/CONTRIBUTING.md)** - Commit conventions and workflow
 - **[Learning Sprints](docs/sprints/)** - Sprint-by-sprint learning documentation
+- **[CI/CD Documentation](docs/CI-CD.md)**
 
 ## 🎯 Project Goals
 
