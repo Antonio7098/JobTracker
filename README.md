@@ -1,5 +1,6 @@
 # JobTracker
-[![CI Build and Test](https://github.com/Antonio7098/JobTracker/actions/workflows/ci-build.yaml/badge.svg)](https://github.com/Antonio7098/JobTracker/actions/workflows/ci-build.yaml)
+
+**Pipeline Status:** [![CI Build and Test](https://github.com/Antonio7098/JobTracker/actions/workflows/ci-build.yaml/badge.svg)](https://github.com/Antonio7098/JobTracker/actions/workflows/ci-build.yaml)
 
 A .NET 8 REST API for tracking job applications, including employers and job vacancies, with comprehensive unit testing.
 
