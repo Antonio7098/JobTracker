@@ -24,7 +24,7 @@
     > *Description: Before automating anything, understand what problems CI/CD solves and why manual processes don't scale.*
     - [X] **Sub-task 1.1:** Research the origins of Continuous Integration (hint: it emerged from Extreme Programming in the late 1990s)
     ```
-    It originated in the late 90s as a core component of EP. Formalised by Kent Beck and Ron Jeffries, the foundational idea was to eliminate late-stage integration by integrating changes into a shared repository multiple times a day and verifying each integration with automated builds and tests.
+    It originated in the late 90s as a core component of XP. Formalised by Kent Beck and Ron Jeffries, the foundational idea was to eliminate late-stage integration by integrating changes into a shared repository multiple times a day and verifying each integration with automated builds and tests.
 
     CI was not just a tool- it was a cultural shift rooted in the agile values of XP.
     ```
@@ -248,10 +248,10 @@
     - [X] **Sub-task 16.2:** Run it against your workflow files and fix any warnings
     - [X] **Sub-task 16.3:** (Optional) Add a pre-commit hook that runs `actionlint` automatically
 
-- [ ] **Task 17: Configure Branch Protection Rules**
+- [X] **Task 17: Configure Branch Protection Rules**
     > *Description: Protect the main branch to enforce CI checks and prevent unauthorized changes.*
     - [X] **Sub-task 17.1:** Navigate to repository Settings → Branches → Add branch protection rule
-    - [ ] **Sub-task 17.2:** Configure the following rules for `main` branch:
+    - [X] **Sub-task 17.2:** Configure the following rules for `main` branch:
         - Require pull request before merging
         - Require status checks to pass before merging (select all 6 CI jobs)
         - Require branches to be up to date before merging
@@ -279,7 +279,7 @@
            - CI-CD.md guide, README badge, troubleshooting tips
     - [X] **Sub-task 18.3:** Write down your planned commit messages before finalizing
 
-- [ ] **Task 19: Update Project Documentation & Version**
+- [X] **Task 19: Update Project Documentation & Version**
     > *Description: Document your new automated infrastructure.*
     - [X] **Sub-task 19.1:** Update root `README.md` to:
         - Add build status badge at the top
@@ -291,7 +291,7 @@
         - Since this adds CI/CD infrastructure (feature), increment MINOR version (e.g., 0.8.0 → 0.9.0)
     - [X] **Sub-task 19.5:** Create a conventional commit: `ci: implement GitHub Actions CI/CD pipeline`
     - [X] **Sub-task 19.6:** Create an annotated Git tag: `git tag -a v0.9.0 -m "Add CI/CD automation with GitHub Actions"`
-    - [ ] **Sub-task 19.7:** Push commits and tags to remote: `git push && git push --tags`
+    - [X] **Sub-task 19.7:** Push commits and tags to remote: `git push && git push --tags`
 
 ---
 
@@ -399,6 +399,25 @@
   git commit -m "test: verify branch protection"
   git push origin main  # Should be rejected
   git reset --hard HEAD~1  # Undo test commit
+  ```
+  **Verified:**
+  ```
+  antonio@antonio-Yoga-6-13ALC7:~/programming/JobTracker$ git push
+  Enumerating objects: 5, done.
+  Counting objects: 100% (5/5), done.
+  Delta compression using up to 16 threads
+  Compressing objects: 100% (3/3), done.
+  Writing objects: 100% (3/3), 297 bytes | 297.00 KiB/s, done.
+  Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+  remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+  remote: error: GH006: Protected branch update failed for refs/heads/main.
+  remote: 
+  remote: - Changes must be made through a pull request.
+  remote: 
+  remote: - 7 of 7 required status checks are expected.
+  To https://github.com/Antonio7098/JobTracker.git
+  ! [remote rejected] main -> main (protected branch hook declined)
+  error: failed to push some refs to 'https://github.com/Antonio7098/JobTracker.git'
   ```
 ---
 
