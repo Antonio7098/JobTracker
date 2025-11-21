@@ -400,7 +400,6 @@
   git push origin main  # Should be rejected
   git reset --hard HEAD~1  # Undo test commit
   ```
-
 ---
 
 ### Conceptual Gaps
