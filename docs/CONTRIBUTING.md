@@ -495,7 +495,106 @@ The CI workflow is defined in `.github/workflows/ci-build.yaml`.
 
 For detailed CI/CD documentation, see [`docs/CI-CD.md`](../docs/CI-CD.md).
 
+---
 
+## Branch Protection Rules
+
+The `main` branch is protected to ensure code quality and prevent accidental changes. These rules are enforced automatically by GitHub.
+
+### What's Protected
+
+The following rules apply to the `main` branch:
+
+| Rule | What it means | Why it matters |
+|------|---------------|----------------|
+| **Require pull request before merging** | You cannot push directly to `main` | Forces code review process and CI validation |
+| **Require status checks to pass** | All 6 CI jobs must pass before merging | Prevents broken code from entering `main` |
+| **Require branches to be up to date** | Your branch must be rebased on latest `main` | Prevents merge conflicts and ensures tests run against current code |
+| **Block force pushes** | `git push --force` is blocked | Prevents accidental history rewriting |
+| **Restrict deletions** | Only admins can delete `main` | Prevents accidental branch deletion |
+| **Include administrators** | Rules apply to everyone, including repo owner | Ensures consistent workflow for all contributors |
+
+### Required Status Checks
+
+Before a PR can be merged, these 6 CI jobs must pass:
+
+- ✅ Build (ubuntu-latest)
+- ✅ Build (windows-latest)
+- ✅ Unit Tests (ubuntu-latest)
+- ✅ Unit Tests (windows-latest)
+- ✅ Acceptance Tests (ubuntu-latest)
+- ✅ Acceptance Tests (windows-latest)
+
+### How to Work with Protected Branches
+
+#### ✅ **Correct Workflow**
+
+```bash
+# 1. Create a feature branch
+git checkout -b feat/new-feature
+
+# 2. Make your changes and commit
+git add .
+git commit -m "feat: add new feature"
+
+# 3. Push to your feature branch
+git push origin feat/new-feature
+
+# 4. Open a Pull Request on GitHub
+# 5. Wait for CI to pass (all 6 jobs green)
+# 6. Merge the PR on GitHub (only possible after CI passes)
+```
+
+#### ❌ **What Won't Work**
+
+```bash
+# This will be REJECTED by GitHub
+git checkout main
+git commit -m "fix: quick fix"
+git push origin main
+# Error: protected branch hook declined
+```
+
+### What Happens When You Try to Push to Main
+
+If you attempt to push directly to `main`, you'll see:
+
+```
+remote: error: GH006: Protected branch update failed for refs/heads/main.
+remote: error: Changes must be made through a pull request.
+To https://github.com/Antonio7098/JobTracker.git
+ ! [remote rejected] main -> main (protected branch hook declined)
+error: failed to push some refs
+```
+
+**Solution:** Create a feature branch and open a PR instead.
+
+### Bypassing Protection (Emergency Only)
+
+As the repository administrator, you can bypass these rules if absolutely necessary:
+
+1. Go to Settings → Branches
+2. Temporarily disable the rule
+3. Make your emergency change
+4. Re-enable the rule immediately
+
+**Warning:** Only do this in true emergencies. The protection rules exist for good reason!
+
+### Why These Rules Matter
+
+**Without branch protection:**
+- ❌ Broken code could be pushed to `main`
+- ❌ Tests could be skipped
+- ❌ History could be accidentally rewritten
+- ❌ The branch could be deleted by mistake
+
+**With branch protection:**
+- ✅ Every change goes through CI
+- ✅ All tests must pass before merge
+- ✅ Code quality is enforced automatically
+- ✅ `main` branch is always in a deployable state
+
+---
 
 ## Semantic Versioning
 
