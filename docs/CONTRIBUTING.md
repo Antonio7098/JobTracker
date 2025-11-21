@@ -350,6 +350,153 @@ Completes Sprint 6 - Validation and Error Handling
 
 ---
 
+## Working with CI/CD
+
+This project uses **GitHub Actions** for Continuous Integration. Every push and pull request automatically triggers a build and test pipeline.
+
+### Understanding the CI Pipeline
+
+When you push code or open a PR, the following happens automatically:
+
+1. **Build Stage** - Your code is compiled on both Ubuntu and Windows
+2. **Unit Tests** - All unit tests are executed
+3. **Acceptance Tests** - All BDD scenarios are run
+4. **Test Reporting** - Results are published to the GitHub UI
+
+**Total time:** ~1-2 minutes (with cache hits)
+
+### Viewing CI Results
+
+#### On a Pull Request
+
+1. Scroll to the bottom of your PR page
+2. Look for the **"Checks"** section
+3. You'll see 6 jobs:
+   - Build (ubuntu-latest)
+   - Build (windows-latest)
+   - Unit Tests (ubuntu-latest)
+   - Unit Tests (windows-latest)
+   - Acceptance Tests (ubuntu-latest)
+   - Acceptance Tests (windows-latest)
+4. Click any job to view detailed logs
+
+#### From the Actions Tab
+
+1. Go to the **Actions** tab in the repository
+2. Find your workflow run (named after your commit message)
+3. Click to see all jobs and their status
+
+### What to Do When CI Fails
+
+#### ❌ Build Failure
+
+**Symptom:** Red X on the Build job
+
+**Common causes:**
+- Compilation errors (missing using statements, type mismatches)
+- Missing NuGet packages
+
+**How to fix:**
+1. Click the failed job to see the error
+2. Look for the specific compilation error in the logs
+3. Fix it locally: `dotnet build`
+4. Push the fix
+
+#### ❌ Test Failure
+
+**Symptom:** Red X on Unit Tests or Acceptance Tests job
+
+**Common causes:**
+- Test assertion failed
+- Exception during test execution
+- Flaky test (passes locally, fails in CI)
+
+**How to fix:**
+1. Click the failed job
+2. Find which test failed in the logs
+3. Run that test locally: `dotnet test --filter FullyQualifiedName~TestName`
+4. Fix the issue
+5. Verify all tests pass: `dotnet test`
+6. Push the fix
+
+#### 🟡 Platform-Specific Failure
+
+**Symptom:** Passes on Ubuntu, fails on Windows (or vice versa)
+
+**Common causes:**
+- File path issues (`/` vs `\`)
+- Case-sensitive file names
+- Line ending differences
+
+**How to fix:**
+- Use `Path.Combine()` for file paths
+- Ensure consistent casing in file names
+- Configure Git to handle line endings: `git config core.autocrlf true`
+
+### Running Tests Locally Before Pushing
+
+**Best practice:** Always run tests locally before pushing to avoid CI failures.
+
+```bash
+# Build the project
+dotnet build
+
+# Run all tests
+dotnet test
+
+# Run only unit tests
+dotnet test JobTracker.Api.Tests
+
+# Run only acceptance tests
+dotnet test JobTracker.Api.AcceptanceTests
+
+# Run a specific test
+dotnet test --filter FullyQualifiedName~TestMethodName
+```
+
+### CI-Friendly Commit Workflow
+
+```bash
+# 1. Make your changes
+# 2. Build locally
+dotnet build
+
+# 3. Run tests locally
+dotnet test
+
+# 4. Stage and commit (following Conventional Commits)
+git add .
+git commit -m "feat(api): add employer search endpoint"
+
+# 5. Push to your branch
+git push origin feat/employer-search
+
+# 6. Open PR and wait for CI to pass
+# 7. If CI fails, fix and push again (CI will re-run automatically)
+```
+
+### Skipping CI (Not Recommended)
+
+You can skip CI by adding `[skip ci]` to your commit message, but **this is strongly discouraged** except for documentation-only changes:
+
+```bash
+git commit -m "docs: fix typo in README [skip ci]"
+```
+
+### CI Configuration
+
+The CI workflow is defined in `.github/workflows/ci-build.yaml`. 
+
+**Key features:**
+- **Matrix builds:** Tests on Ubuntu and Windows
+- **Caching:** NuGet packages are cached for speed
+- **Test reporting:** Results published to GitHub UI
+- **Status badge:** Shows current build status in README
+
+For detailed CI/CD documentation, see [`docs/CI-CD.md`](../docs/CI-CD.md).
+
+
+
 ## Semantic Versioning
 
 This project follows **Semantic Versioning (SemVer)**: `MAJOR.MINOR.PATCH`
