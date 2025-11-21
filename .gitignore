@@ -73,7 +73,9 @@ ScaffoldingReadMe.txt
 
 # StyleCop
 StyleCopReport.xml
-
+# Docker
+docker-compose.override.yml
+.docker/
 # Files built by Visual Studio
 *_i.c
 *_p.c
@@ -489,3 +491,7 @@ $RECYCLE.BIN/
 
 # Stray error files
 System.InvalidOperationException:
+
+# Docker
+docker-compose.override.yml
+.docker/
