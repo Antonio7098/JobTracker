@@ -90,3 +90,56 @@ The project also includes a **Behavior-Driven Development (BDD)** acceptance tes
 - **Scope:** Tests the entire application stack end-to-end (E2E) using `WebApplicationFactory`.
 - **Database:** Uses an in-memory database provider to simulate a real database environment while maintaining speed and isolation.
 - **Goal:** To verify that the system meets business requirements and behaves correctly from an end-user perspective.
+
+## 7. CI/CD Pipeline
+
+The project uses **GitHub Actions** for Continuous Integration (CI), automatically building and testing every code change to ensure quality and prevent regressions.
+
+### Pipeline Architecture
+
+The CI workflow (`.github/workflows/ci-build.yaml`) runs on every push to `main` or `sprint-*` branches and on all pull requests targeting `main`.
+
+**Pipeline Stages:**
+
+1. **Build** (2 parallel jobs: Ubuntu + Windows)
+   - Checks out source code
+   - Sets up .NET 8.0 SDK
+   - Caches NuGet packages for faster subsequent runs
+   - Restores dependencies
+   - Compiles the solution
+
+2. **Unit Tests** (2 parallel jobs: Ubuntu + Windows)
+   - Runs after successful build
+   - Executes all unit tests in `JobTracker.Api.Tests`
+   - Collects code coverage metrics
+   - Publishes test results to GitHub UI
+
+3. **Acceptance Tests** (2 parallel jobs: Ubuntu + Windows)
+   - Runs in parallel with unit tests after successful build
+   - Executes all BDD scenarios in `JobTracker.Api.AcceptanceTests`
+   - Publishes test results separately for clarity
+
+### Cross-Platform Testing
+
+The workflow uses a **matrix strategy** to test on both `ubuntu-latest` and `windows-latest` runners, ensuring the application works correctly across different operating systems. This is critical for .NET applications that may be deployed to various environments.
+
+### Performance Optimizations
+
+- **NuGet Package Caching:** Dependencies are cached using `actions/cache@v4` with a cache key based on the OS and project files. This reduces build times from ~1 minute to ~30 seconds on cache hits.
+- **Parallel Execution:** Build, unit tests, and acceptance tests run in parallel where possible, reducing total pipeline time.
+- **Job Dependencies:** Test jobs only run if the build succeeds, saving CI minutes on compilation failures.
+
+### Quality Gates
+
+- **All tests must pass** before a PR can be merged
+- **Test results are published** to the GitHub UI for easy review
+- **Build status badge** in README.md shows current pipeline status
+- **Workflow linting** with `actionlint` ensures YAML configuration is valid
+
+### Security Best Practices
+
+- **Pinned action versions** (e.g., `@v4`) prevent supply chain attacks
+- **Minimal permissions** granted to jobs (read-only by default, write only for test reporting)
+- **No secrets required** for current CI workflow (tests use in-memory databases)
+
+For detailed troubleshooting and workflow documentation, see [`docs/CI-CD.md`](CI-CD.md).

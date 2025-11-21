@@ -1,5 +1,7 @@
 # JobTracker
 
+**Pipeline Status:** [![CI Build and Test](https://github.com/Antonio7098/JobTracker/actions/workflows/ci-build.yaml/badge.svg)](https://github.com/Antonio7098/JobTracker/actions/workflows/ci-build.yaml)
+
 A .NET 8 REST API for tracking job applications, including employers and job vacancies, with comprehensive unit testing.
 
 ## 📁 Solution Structure
@@ -72,6 +74,7 @@ JobTracker/
 - **[Architecture Overview](docs/ARCHITECTURE.md)** - System design and architecture decisions
 - **[Contributing Guide](docs/CONTRIBUTING.md)** - Commit conventions and workflow
 - **[Learning Sprints](docs/sprints/)** - Sprint-by-sprint learning documentation
+- **[CI/CD Documentation](docs/CI-CD.md)**
 
 ## 🎯 Project Goals
 

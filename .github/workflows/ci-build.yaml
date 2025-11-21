@@ -1,18 +1,61 @@
-name: CI Build Only
+name: CI Build and Test
+
+env:
+  DOTNET_VERSION: 8.0.x
 
 on:
   push:
     branches:
       - main
-
+      - sprint-09-ci-cd-automation
   pull_request:
     branches:
       - main
 
 jobs:
+    
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    
+    - name: Cache NuGet Packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json', '**/*.csproj') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+    
+    - name: Restore Dependencies
+      run: dotnet restore
+
+    - name: Build Project
+      run: dotnet build --no-restore
+
+
+  unit_tests:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+    needs: build
+    permissions:
+      checks: write
+      contents: read
+    
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -20,10 +63,76 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
-      
-      - name: Restore Dependancies
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Cache NuGet Packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json', '**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore Dependencies
         run: dotnet restore
 
       - name: Build Project
-        run: dotnet build --no-restore 
+        run: dotnet build --no-restore
+
+      - name: Run Unit Tests
+        run: dotnet test JobTracker.Api.Tests --no-build --logger "trx;LogFileName=test-results.trx" --collect:"XPlat Code Coverage"
+
+      - name: Publish Unit Test Results
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Unit Tests Report
+          path: '**/test-results.trx'
+          reporter: dotnet-trx
+          fail-on-error: true
+
+  acceptance_tests:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+    needs: build
+    permissions:
+      checks: write
+      contents: read
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Cache NuGet Packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json', '**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Build Project
+        run: dotnet build --no-restore
+
+      - name: Run Acceptance Tests
+        run: dotnet test JobTracker.Api.AcceptanceTests --no-build --logger "trx;LogFileName=test-results.trx" --collect:"XPlat Code Coverage"
+
+      - name: Publish Acceptance Test Results
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Acceptance Tests Report
+          path: '**/test-results.trx'
+          reporter: dotnet-trx
+          fail-on-error: true
