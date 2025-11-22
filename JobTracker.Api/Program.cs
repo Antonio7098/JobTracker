@@ -57,6 +57,13 @@ app.MapEmployersEndpoints();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+if (app.Environment.IsDevelopment())
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<JobTrackerDbContext>();
+    db.Database.Migrate();
+}
+
 app.Run();
 
 public partial class Program { }

@@ -30,6 +30,7 @@ services:
 
     environment:
       - ConnectionStrings__DefaultConnection=Server=mysql;Database=JobTrackerDb;User=user;Password=password;
+      - ASPNETCORE_ENVIRONMENT=Development
 
     depends_on:
       mysql:
